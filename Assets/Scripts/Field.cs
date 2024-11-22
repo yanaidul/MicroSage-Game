@@ -29,16 +29,16 @@ public class Field : MonoBehaviour
       {
         var tile = row.GetChild(x).GetComponent<Tile>();
         tile.gameObject.name = "" + x;
-        tile.onSelected.AddListener(onTileSelected);
-        _CollectAmountToSolveFromTile(tile);
+        tile.onSelected.AddListener(OnTileSelected);
+        CollectAmountToSolveFromTile(tile);
         _grid[x, y] = tile;
       }
     }
     SetGameStatus(_solved, _amountToSolve.Count);
-    _OutputGrid();
+    OutputGrid();
   }
 
-  void _CollectAmountToSolveFromTile(Tile tile)
+  void CollectAmountToSolveFromTile(Tile tile)
   {
     if (tile.cid > Tile.UNPLAYABLE_INDEX)
     {
@@ -48,7 +48,7 @@ public class Field : MonoBehaviour
     }
   }
 
-  void _OutputGrid()
+  void OutputGrid()
   {
     var results = "";
     int dimension = transform.childCount;
@@ -78,7 +78,7 @@ public class Field : MonoBehaviour
       _mouseGridX = (int)Mathf.Floor(_mouseWorldPosition.x);
       _mouseGridY = (int)Mathf.Floor(_mouseWorldPosition.y);
 
-      if (_CheckMouseOutsideGrid()) return;
+      if (CheckMouseOutsideGrid()) return;
 
       Tile hoverTile = _grid[_mouseGridX, _mouseGridY];
       Tile firstTile = _connections[0];
@@ -86,7 +86,7 @@ public class Field : MonoBehaviour
 
       if (hoverTile.isHighlighted || hoverTile.isSolved || isDifferentActiveTile) return;
 
-      Vector2 connectionTilePosition = _FindTileCoordinates(_connectionTile);
+      Vector2 connectionTilePosition = FindTileCoordinates(_connectionTile);
       bool isPositionDifferent = IsDifferentPosition(_mouseGridX, _mouseGridY, connectionTilePosition);
 
       Debug.Log("Field -> OnMouseDrag(" + isPositionDifferent + "): " + _mouseGridX + "|" + _mouseGridY);
@@ -113,7 +113,7 @@ public class Field : MonoBehaviour
         _connectionTile = hoverTile;
         _connections.Add(_connectionTile);
 
-        if (_CheckIfTilesMatch(hoverTile, firstTile))
+        if (CheckIfTilesMatch(hoverTile, firstTile))
         {
           _connections.ForEach((tile) => tile.isSolved = true);
           _canDrawConnection = false;
@@ -128,19 +128,19 @@ public class Field : MonoBehaviour
     }
   }
 
-  bool _CheckIfTilesMatch(Tile tile, Tile another)
+  bool CheckIfTilesMatch(Tile tile, Tile another)
   {
     return tile.cid > 0 && another.cid == tile.cid;
   }
 
-  bool _CheckMouseOutsideGrid()
+  bool CheckMouseOutsideGrid()
   {
     return _mouseGridY >= _dimensionY || _mouseGridY < 0 || _mouseGridX >= _dimensionX || _mouseGridX < 0;
   }
 
-  void onTileSelected(Tile tile)
+  void OnTileSelected(Tile tile)
   {
-    Debug.Log("Field -> onTileSelected(" + tile.isSelected + "): " + _FindTileCoordinates(tile));
+    Debug.Log("Field -> onTileSelected(" + tile.isSelected + "): " + FindTileCoordinates(tile));
     if (tile.isSelected)
     {
       _connectionTile = tile;
@@ -153,15 +153,15 @@ public class Field : MonoBehaviour
     {
       bool isFirstTileInConnection = _connectionTile == tile;
       if (isFirstTileInConnection) tile.HightlightReset();
-      else if (!_CheckIfTilesMatch(_connectionTile, tile))
+      else if (!CheckIfTilesMatch(_connectionTile, tile))
       {
-        _ResetConnections();
+        ResetConnections();
       }
       _canDrawConnection = false;
     }
   }
 
-  public void onRestart()
+  public void OnRestart()
   {
     Debug.Log("Field -> onRestart");
     int dimension = transform.childCount;
@@ -173,7 +173,7 @@ public class Field : MonoBehaviour
         var tile = _grid[x, y];
         tile.ResetConnection();
         tile.HightlightReset();
-        _CollectAmountToSolveFromTile(tile);
+        CollectAmountToSolveFromTile(tile);
       }
     }
     _solved = 0;
@@ -185,7 +185,7 @@ public class Field : MonoBehaviour
     //GameObject.Find("txtStatus").GetComponent<UnityEngine.UI.Text>().text = "Solve: " + solved + " from " + from;
   }
 
-  void _ResetConnections()
+  void ResetConnections()
   {
     Debug.Log("Field -> _ResetConnections: _connections.Count = " + _connections.Count);
     _connections.ForEach((tile) =>
@@ -195,7 +195,7 @@ public class Field : MonoBehaviour
     });
   }
 
-  Vector2 _FindTileCoordinates(Tile tile)
+  Vector2 FindTileCoordinates(Tile tile)
   {
     // Debug.Log("Field -> _FindTileCoordinates: " + tile.gameObject.name + " | " + tile.gameObject.transform.parent.gameObject.name);
     int x = int.Parse(tile.gameObject.name);
