@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _loadingUI;
     [SerializeField] private GameObject _gameUI;
     [SerializeField] private GameObject _winPopUp;
     [SerializeField] private GameObject _losePopUp;
@@ -12,14 +13,25 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameEventNoParam _onResume;
     void Start()
     {
-        OnGameplay();
+        OnLoading();
 
+    }
+
+    public void OnLoading()
+    {
+        _onResume.Raise();
+        _loadingUI.SetActive(true);
+        _gameUI.SetActive(false);
+        _winPopUp.SetActive(false);
+        _settingPopUp.SetActive(false);
+        _losePopUp.SetActive(false);
     }
 
     public void OnGameplay()
     {
         _onResume.Raise();
         _gameUI.SetActive(true);
+        _loadingUI.SetActive(false);
         _winPopUp.SetActive(false);
         _settingPopUp.SetActive(false);
         _losePopUp.SetActive(false);
