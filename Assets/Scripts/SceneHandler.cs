@@ -19,9 +19,9 @@ public class SceneHandler : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OnPlayScene()
+    public void OnPlayScene(int index)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(index);
     }
 
     public void OnMainMenuScene()

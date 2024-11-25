@@ -10,7 +10,7 @@ public class BGM : MonoBehaviour
 
     private void Start()
     {
-        _volumeSlider.value = 0.125F;
+        if(_volumeSlider != null) _volumeSlider.value = 0.125F;
         _audioSource.volume = 0.125F;
     }
 
