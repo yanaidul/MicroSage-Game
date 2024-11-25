@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     static public string NAME_MAK = "Mark";
 
     public int cid = 0;
+    [SerializeField] private GameEventNoParam _onClickColorSFX;
     [HideInInspector]
     public UnityEvent<Tile> onSelected;
 
@@ -126,7 +127,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseUp()
     {
-        if ((_isPlayble && !_isSolved) || !_isNotGrid)
+        if ((_isPlayble && !_isSolved && !_isNotGrid))
         {
             _isSelected = false;
             InvokeOnSelected();
@@ -135,9 +136,10 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if ((_isPlayble && !_isSolved) || !_isNotGrid)
+        if ((_isPlayble && !_isSolved && !_isNotGrid))
         {
             _isSelected = true;
+            _onClickColorSFX.Raise();
             InvokeOnSelected();
         }
     }

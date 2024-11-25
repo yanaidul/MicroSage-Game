@@ -6,7 +6,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
-    //[SerializeField] private GameEventNoParam _onGameOver;
+    [SerializeField] private GameEventNoParam _onGameOver;
 
     public bool stopTimer = false;
     [SerializeField] private float _countdownTime = 60;
@@ -51,8 +51,9 @@ public class Timer : MonoBehaviour
         else
         {
             Debug.Log("Timer expired!");
-            //_onGameOver.Raise();
             _countdownTime = 0;
+            UpdateTimerText();
+            _onGameOver.Raise();
         }
     }
 

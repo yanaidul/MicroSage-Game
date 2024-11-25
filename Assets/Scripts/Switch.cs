@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
+    [SerializeField] private GameEventNoParam _onPlaySwitchSFX;
+
     [SerializeField] private Tile _referencedTile;
     [SerializeField] private Led _led;
     [SerializeField] private Field _field;
@@ -22,7 +24,8 @@ public class Switch : MonoBehaviour
     private void OnMouseDown()
     {
         if (!_referencedTile.isSolved || !_field.CheckCurrentSolvedStatus()) return;
-        if(_isClicked)
+        _onPlaySwitchSFX.Raise();
+        if (_isClicked)
         {
             _onSwitch.SetActive(false);
             _offSwitch.SetActive(true);
