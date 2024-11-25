@@ -11,6 +11,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject _settingPopUp;
     [SerializeField] private GameEventNoParam _onPause;
     [SerializeField] private GameEventNoParam _onResume;
+
+    [SerializeField] private string _stagePlayerPrefs;
+    [SerializeField] private int _stageID;
     void Start()
     {
         OnLoading();
@@ -39,6 +42,8 @@ public class CanvasManager : MonoBehaviour
 
     public void OnWin()
     {
+        if(PlayerPrefs.GetInt(_stagePlayerPrefs) < _stageID) PlayerPrefs.SetInt(_stagePlayerPrefs, _stageID);
+
         _winPopUp.SetActive(true);
         _settingPopUp.SetActive(false);
         _losePopUp.SetActive(false);

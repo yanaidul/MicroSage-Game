@@ -7,7 +7,6 @@ public class SceneHandler : MonoBehaviour
 {
     //[SerializeField] GameEventNoParam _onNextLevelEvent;
     //[SerializeField] GameEventNoParam _onOnReturnToLevel1Event;
-
     public void OnNextLevel()
     {
         //_onNextLevelEvent.Raise();
