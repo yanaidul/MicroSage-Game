@@ -29,6 +29,11 @@ public class MainMenuCanvasManager : MonoBehaviour
         _stageSelectionUI.SetActive(true);
 
         _mainMenuUI.SetActive(false);
+        _icAND.SetActive(false);
+        _icOR.SetActive(false);
+        _icNAND.SetActive(false);
+        _icNOR.SetActive(false);
+        _icNOT.SetActive(false);
     }
 
     public void OnOpenICAnd()
