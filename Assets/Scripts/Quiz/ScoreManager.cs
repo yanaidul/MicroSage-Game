@@ -54,4 +54,11 @@ public class ScoreManager : MonoBehaviour
             // UpdateScoreText();
         }
     }
+
+    public void ResetScore()
+    {
+        PlayerPrefs.DeleteKey(ScoreKey);
+        score = 0;
+        UpdateScoreText();
+    }
 }

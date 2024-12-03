@@ -18,4 +18,5 @@ public class QuestionData : ScriptableObject
 {
     public string category;
     public Question[] questions;
+    public string targetScene; // Tambahkan properti ini untuk menentukan scene tujuan
 }
