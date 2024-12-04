@@ -46,7 +46,7 @@ public class QuizManager : MonoBehaviour
     {
         int selectedCategoryIndex = PlayerPrefs.GetInt("SelectedCategory", 0);
         gameFinishedPanel.SetActive(false);
-        SelectCategory(0);
+        SelectCategory(selectedCategoryIndex);
     }
 
     public void SelectCategory(int categoryIndex)
@@ -162,7 +162,12 @@ public class QuizManager : MonoBehaviour
         }
 
         // Pindah ke scene yang ditentukan
-        SceneManager.LoadScene(sceneName);
+        OnPlayScene(sceneName);
+    }
+
+    public void OnPlayScene(string index)
+    {
+        SceneManager.LoadScene(index);
     }
 
     public void ShowCorrectReply()

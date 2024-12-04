@@ -50,10 +50,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/NOT 3.unity
     guid: 9c3c31f1d1ab02c4894671b034a9017c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scene/CategoryMenu.unity
     guid: 35c608356b4862c4297f3cdd4a4935dc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scene/QUIZ.unity
     guid: ad2ef274bd099204893b5d0ad127d139
   - enabled: 0

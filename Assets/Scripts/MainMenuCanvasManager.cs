@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuCanvasManager : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class MainMenuCanvasManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _icNOT;
+
+    [SerializeField]
+    private GameObject _icXOR;
+
+    [SerializeField]
+    private GameObject _icXNOR;
 
     [SerializeField]
     private GameObject _ResetButton;
@@ -84,6 +91,8 @@ public class MainMenuCanvasManager : MonoBehaviour
         _icNAND.SetActive(false);
         _icNOR.SetActive(false);
         _icNOT.SetActive(false);
+        _icXOR.SetActive(false);
+        _icXNOR.SetActive(false);
     }
 
     public void OnOpenICAnd()
@@ -96,6 +105,8 @@ public class MainMenuCanvasManager : MonoBehaviour
         _icNAND.SetActive(false);
         _icNOR.SetActive(false);
         _icNOT.SetActive(false);
+        _icXOR.SetActive(false);
+        _icXNOR.SetActive(false);
     }
 
     public void OnOpenICOr()
@@ -108,6 +119,8 @@ public class MainMenuCanvasManager : MonoBehaviour
         _icNAND.SetActive(false);
         _icNOR.SetActive(false);
         _icNOT.SetActive(false);
+        _icXOR.SetActive(false);
+        _icXNOR.SetActive(false);
     }
 
     public void OnOpenICNand()
@@ -120,6 +133,8 @@ public class MainMenuCanvasManager : MonoBehaviour
         _icAND.SetActive(false);
         _icNOR.SetActive(false);
         _icNOT.SetActive(false);
+        _icXOR.SetActive(false);
+        _icXNOR.SetActive(false);
     }
 
     public void OnOpenICNor()
@@ -132,6 +147,8 @@ public class MainMenuCanvasManager : MonoBehaviour
         _icOR.SetActive(false);
         _icAND.SetActive(false);
         _icNOT.SetActive(false);
+        _icXOR.SetActive(false);
+        _icXNOR.SetActive(false);
     }
 
     public void OnOpenICNot()
@@ -144,5 +161,45 @@ public class MainMenuCanvasManager : MonoBehaviour
         _icOR.SetActive(false);
         _icAND.SetActive(false);
         _icNOR.SetActive(false);
+        _icXOR.SetActive(false);
+        _icXNOR.SetActive(false);
+    }
+
+    public void OnOpenICXor()
+    {
+        _icXOR.SetActive(true);
+
+        _mainMenuUI.SetActive(false);
+        _stageSelectionUI.SetActive(false);
+        _icNAND.SetActive(false);
+        _icOR.SetActive(false);
+        _icAND.SetActive(false);
+        _icNOR.SetActive(false);
+        _icNOT.SetActive(false);
+        _icXNOR.SetActive(false);
+    }
+
+    public void OnOpenICXnor()
+    {
+        _icXNOR.SetActive(true);
+
+        _mainMenuUI.SetActive(false);
+        _stageSelectionUI.SetActive(false);
+        _icNAND.SetActive(false);
+        _icOR.SetActive(false);
+        _icAND.SetActive(false);
+        _icNOR.SetActive(false);
+        _icNOT.SetActive(false);
+        _icXOR.SetActive(false);
+    }
+
+    public void OnCategorySelected(int categoryIndex)
+    {
+        PlayerPrefs.SetInt("SelectedCategory", categoryIndex);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
