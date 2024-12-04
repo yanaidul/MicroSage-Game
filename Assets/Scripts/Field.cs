@@ -116,7 +116,7 @@ public class Field : MonoBehaviour
                 _connectionTile = hoverTile;
                 _latestConnections.Add(_connectionTile);
 
-                if (CheckIfTilesMatch(hoverTile, firstTile))
+                if (CheckIfTilesMatch(hoverTile, firstTile) )
                 {
                     _latestConnections.ForEach((tile) => tile.isSolved = true);
                     _canDrawConnection = false;

@@ -77,7 +77,9 @@ public class Tile : MonoBehaviour
     private Color _originalColor;
 
     [SerializeField] private bool _isNotGrid = false;
+    [SerializeField] private bool _isFromGenerator = false;
     public bool IsNotGrid => _isNotGrid;
+    public bool IsFromGenerator => _isFromGenerator;
     void Start()
     {
         _isPlayble = cid > UNPLAYABLE_INDEX;
