@@ -4162,19 +4162,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 589363164}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &611512355
 GameObject:
   m_ObjectHideFlags: 0
@@ -12290,13 +12278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuUI: {fileID: 1608271525}
   _stageSelectionUI: {fileID: 1506405099}
-  _icAND: {fileID: 1012497230}
-  _icOR: {fileID: 1419994292}
-  _icNAND: {fileID: 1221317191}
-  _icNOR: {fileID: 868692516}
-  _icNOT: {fileID: 281653914}
-  _icXOR: {fileID: 299284851}
-  _icXNOR: {fileID: 1060033434}
+  _LoadingUI: {fileID: 0}
   _ResetButton: {fileID: 295481564}
 --- !u!1001 &8419908663020554646
 PrefabInstance:

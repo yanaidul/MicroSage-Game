@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Main Menu.unity
     guid: 043224c4cb019764dbc9ea044f768d71
+  - enabled: 1
+    path: Assets/Scene/Main Menu Cadangan.unity
+    guid: af130b1a6cb81084cb4c055e0f86cb53
+  - enabled: 1
+    path: Assets/Scene/AND 1.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scene/AND 2.unity
     guid: fc7919e404b4df24d94c27c77e0fed5c
@@ -56,7 +62,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/QUIZ.unity
     guid: ad2ef274bd099204893b5d0ad127d139
-  - enabled: 0
-    path: Assets/Scene/AND 1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

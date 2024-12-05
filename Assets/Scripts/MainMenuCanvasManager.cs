@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuCanvasManager : MonoBehaviour
 {
+    [Header("Main Menu Screen")]
     [SerializeField]
     private GameObject _mainMenuUI;
 
@@ -12,25 +14,7 @@ public class MainMenuCanvasManager : MonoBehaviour
     private GameObject _stageSelectionUI;
 
     [SerializeField]
-    private GameObject _icAND;
-
-    [SerializeField]
-    private GameObject _icOR;
-
-    [SerializeField]
-    private GameObject _icNAND;
-
-    [SerializeField]
-    private GameObject _icNOR;
-
-    [SerializeField]
-    private GameObject _icNOT;
-
-    [SerializeField]
-    private GameObject _icXOR;
-
-    [SerializeField]
-    private GameObject _icXNOR;
+    private GameObject _LoadingUI;
 
     [SerializeField]
     private GameObject _ResetButton;
@@ -77,129 +61,131 @@ public class MainMenuCanvasManager : MonoBehaviour
     public void OnOpenMainMenu()
     {
         _mainMenuUI.SetActive(true);
-
+        _LoadingUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
     }
 
     public void OnOpenStageSelection()
     {
+        _LoadingUI.SetActive(false);
         _stageSelectionUI.SetActive(true);
-
         _mainMenuUI.SetActive(false);
-        _icAND.SetActive(false);
-        _icOR.SetActive(false);
-        _icNAND.SetActive(false);
-        _icNOR.SetActive(false);
-        _icNOT.SetActive(false);
-        _icXOR.SetActive(false);
-        _icXNOR.SetActive(false);
+        // _icAND.SetActive(false);
+        // _icOR.SetActive(false);
+        // _icNAND.SetActive(false);
+        // _icNOR.SetActive(false);
+        // _icNOT.SetActive(false);
+        // _icXOR.SetActive(false);
+        // _icXNOR.SetActive(false);
     }
 
-    public void OnOpenICAnd()
+    public void OnOpenLoading()
     {
-        _icAND.SetActive(true);
-
+        _LoadingUI.SetActive(true);
         _mainMenuUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
-        _icOR.SetActive(false);
-        _icNAND.SetActive(false);
-        _icNOR.SetActive(false);
-        _icNOT.SetActive(false);
-        _icXOR.SetActive(false);
-        _icXNOR.SetActive(false);
     }
 
-    public void OnOpenICOr()
-    {
-        _icOR.SetActive(true);
+    // public void OnOpenICAnd()
+    // {
+    //     _icAND.SetActive(true);
 
-        _mainMenuUI.SetActive(false);
-        _stageSelectionUI.SetActive(false);
-        _icAND.SetActive(false);
-        _icNAND.SetActive(false);
-        _icNOR.SetActive(false);
-        _icNOT.SetActive(false);
-        _icXOR.SetActive(false);
-        _icXNOR.SetActive(false);
-    }
+    //     _mainMenuUI.SetActive(false);
+    //     _stageSelectionUI.SetActive(false);
+    //     _icOR.SetActive(false);
+    //     _icNAND.SetActive(false);
+    //     _icNOR.SetActive(false);
+    //     _icNOT.SetActive(false);
+    //     _icXOR.SetActive(false);
+    //     _icXNOR.SetActive(false);
+    // }
 
-    public void OnOpenICNand()
-    {
-        _icNAND.SetActive(true);
+    // public void OnOpenICOr()
+    // {
+    //     _icOR.SetActive(true);
 
-        _mainMenuUI.SetActive(false);
-        _stageSelectionUI.SetActive(false);
-        _icOR.SetActive(false);
-        _icAND.SetActive(false);
-        _icNOR.SetActive(false);
-        _icNOT.SetActive(false);
-        _icXOR.SetActive(false);
-        _icXNOR.SetActive(false);
-    }
+    //     _mainMenuUI.SetActive(false);
+    //     _stageSelectionUI.SetActive(false);
+    //     _icAND.SetActive(false);
+    //     _icNAND.SetActive(false);
+    //     _icNOR.SetActive(false);
+    //     _icNOT.SetActive(false);
+    //     _icXOR.SetActive(false);
+    //     _icXNOR.SetActive(false);
+    // }
 
-    public void OnOpenICNor()
-    {
-        _icNOR.SetActive(true);
+    // public void OnOpenICNand()
+    // {
+    //     _icNAND.SetActive(true);
 
-        _mainMenuUI.SetActive(false);
-        _stageSelectionUI.SetActive(false);
-        _icNAND.SetActive(false);
-        _icOR.SetActive(false);
-        _icAND.SetActive(false);
-        _icNOT.SetActive(false);
-        _icXOR.SetActive(false);
-        _icXNOR.SetActive(false);
-    }
+    //     _mainMenuUI.SetActive(false);
+    //     _stageSelectionUI.SetActive(false);
+    //     _icOR.SetActive(false);
+    //     _icAND.SetActive(false);
+    //     _icNOR.SetActive(false);
+    //     _icNOT.SetActive(false);
+    //     _icXOR.SetActive(false);
+    //     _icXNOR.SetActive(false);
+    // }
 
-    public void OnOpenICNot()
-    {
-        _icNOT.SetActive(true);
+    // public void OnOpenICNor()
+    // {
+    //     _icNOR.SetActive(true);
 
-        _mainMenuUI.SetActive(false);
-        _stageSelectionUI.SetActive(false);
-        _icNAND.SetActive(false);
-        _icOR.SetActive(false);
-        _icAND.SetActive(false);
-        _icNOR.SetActive(false);
-        _icXOR.SetActive(false);
-        _icXNOR.SetActive(false);
-    }
+    //     _mainMenuUI.SetActive(false);
+    //     _stageSelectionUI.SetActive(false);
+    //     _icNAND.SetActive(false);
+    //     _icOR.SetActive(false);
+    //     _icAND.SetActive(false);
+    //     _icNOT.SetActive(false);
+    //     _icXOR.SetActive(false);
+    //     _icXNOR.SetActive(false);
+    // }
 
-    public void OnOpenICXor()
-    {
-        _icXOR.SetActive(true);
+    // public void OnOpenICNot()
+    // {
+    //     _icNOT.SetActive(true);
 
-        _mainMenuUI.SetActive(false);
-        _stageSelectionUI.SetActive(false);
-        _icNAND.SetActive(false);
-        _icOR.SetActive(false);
-        _icAND.SetActive(false);
-        _icNOR.SetActive(false);
-        _icNOT.SetActive(false);
-        _icXNOR.SetActive(false);
-    }
+    //     _mainMenuUI.SetActive(false);
+    //     _stageSelectionUI.SetActive(false);
+    //     _icNAND.SetActive(false);
+    //     _icOR.SetActive(false);
+    //     _icAND.SetActive(false);
+    //     _icNOR.SetActive(false);
+    //     _icXOR.SetActive(false);
+    //     _icXNOR.SetActive(false);
+    // }
 
-    public void OnOpenICXnor()
-    {
-        _icXNOR.SetActive(true);
+    // public void OnOpenICXor()
+    // {
+    //     _icXOR.SetActive(true);
 
-        _mainMenuUI.SetActive(false);
-        _stageSelectionUI.SetActive(false);
-        _icNAND.SetActive(false);
-        _icOR.SetActive(false);
-        _icAND.SetActive(false);
-        _icNOR.SetActive(false);
-        _icNOT.SetActive(false);
-        _icXOR.SetActive(false);
-    }
+    //     _mainMenuUI.SetActive(false);
+    //     _stageSelectionUI.SetActive(false);
+    //     _icNAND.SetActive(false);
+    //     _icOR.SetActive(false);
+    //     _icAND.SetActive(false);
+    //     _icNOR.SetActive(false);
+    //     _icNOT.SetActive(false);
+    //     _icXNOR.SetActive(false);
+    // }
+
+    // public void OnOpenICXnor()
+    // {
+    //     _icXNOR.SetActive(true);
+
+    //     _mainMenuUI.SetActive(false);
+    //     _stageSelectionUI.SetActive(false);
+    //     _icNAND.SetActive(false);
+    //     _icOR.SetActive(false);
+    //     _icAND.SetActive(false);
+    //     _icNOR.SetActive(false);
+    //     _icNOT.SetActive(false);
+    //     _icXOR.SetActive(false);
+    // }
 
     public void OnCategorySelected(int categoryIndex)
     {
         PlayerPrefs.SetInt("SelectedCategory", categoryIndex);
-    }
-
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
     }
 }
