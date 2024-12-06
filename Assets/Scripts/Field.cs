@@ -87,7 +87,7 @@ public class Field : MonoBehaviour
             if (_mouseGridX >= 10 || _mouseGridY >= 12) return;
             bool isDifferentActiveTile = hoverTile.cid > 0 && hoverTile.cid != firstTile.cid;
 
-            if (hoverTile.isHighlighted || hoverTile.isSolved || isDifferentActiveTile || hoverTile.IsNotGrid) return;
+            if (hoverTile.isHighlighted || hoverTile.isSolved || (isDifferentActiveTile && !hoverTile.IsFromGenerator) || hoverTile.IsNotGrid) return;
 
             Vector2 connectionTilePosition = FindTileCoordinates(_connectionTile);
             bool isPositionDifferent = IsDifferentPosition(_mouseGridX, _mouseGridY, connectionTilePosition);
@@ -105,7 +105,6 @@ public class Field : MonoBehaviour
 
                 hoverTile.Highlight();
                 hoverTile.SetConnectionColor(_connectionTile.ConnectionColor);
-
                 _connectionTile.ConnectionToSide(
                     _mouseGridY > connectionTilePosition.y,
                     _mouseGridX > connectionTilePosition.x,
@@ -133,7 +132,7 @@ public class Field : MonoBehaviour
 
     bool CheckIfTilesMatch(Tile tile, Tile another)
     {
-        return tile.cid > 0 && another.cid == tile.cid;
+        return tile.cid > 0 && another.cid == tile.cid && !tile.IsFromGenerator;
     }
 
     bool CheckMouseOutsideGrid()
