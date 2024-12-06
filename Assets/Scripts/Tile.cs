@@ -75,13 +75,17 @@ public class Tile : MonoBehaviour
     private bool _isPlayble = false;
     private bool _isSelected = false;
     private Color _originalColor;
+    private Color _originalColorConnection;
 
     [SerializeField] private bool _isNotGrid = false;
+    [SerializeField] private bool _isFromGenerator = false;
     public bool IsNotGrid => _isNotGrid;
+    public bool IsFromGenerator => _isFromGenerator;
     void Start()
     {
         _isPlayble = cid > UNPLAYABLE_INDEX;
         _originalColor = BackComponentRenderer.color;
+        _originalColorConnection = MarkComponentRenderer.color;
         if (_isPlayble)
         {
             SetConnectionColor(MarkComponentRenderer.color);
@@ -138,6 +142,8 @@ public class Tile : MonoBehaviour
     {
         if ((_isPlayble && !_isSolved && !_isNotGrid))
         {
+            MarkComponentRenderer.color = _originalColorConnection;
+            ConnectionComponentRenderer.color = _originalColorConnection;
             _isSelected = true;
             _onClickColorSFX.Raise();
             InvokeOnSelected();
