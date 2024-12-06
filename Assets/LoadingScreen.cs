@@ -14,56 +14,34 @@ public class LoadingScreen : MonoBehaviour
     public float targetFill = 1f;
 
     public float delay = 3f;
+    public GameObject buttonSkip; // Tambahkan referensi ke buttonSkip di Inspector
+    private int currentStageID;
 
-    // public void LoadScene(int sceneIndex)
-    // {
-    //     loadingBarImage.fillAmount = 0f;
-    //     StartCoroutine(LoadScene_Couroutine(sceneIndex));
-    // }
-
-    // public IEnumerator LoadScene_Couroutine(int sceneIndex)
-    // {
-    //     AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-    //     operation.allowSceneActivation = false;
-    //     yield return new WaitForSeconds(delay);
-
-    //     float elapsedTime = 0f;
-
-    //     while (elapsedTime < fillDuration)
-    //     {
-    //         elapsedTime += Time.deltaTime;
-    //         loadingBarImage.fillAmount = Mathf.Lerp(0f, targetFill, elapsedTime / fillDuration);
-    //         if (elapsedTime >= fillDuration)
-    //         {
-    //             loadingBarImage.fillAmount = targetFill;
-    //             operation.allowSceneActivation = true;
-    //         }
-    //         yield return null;
-    //     }
-    //     // AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-    //     // operation.allowSceneActivation = false;
-    //     // float progress = 0;
-    //     // yield return new WaitForSeconds(delay);
-    //     // while (!operation.isDone)
-    //     // {
-    //     //     progress = Mathf.MoveTowards(progress, operation.progress, Time.deltaTime);
-    //     //     progressSlider.value = progress;
-    //     //     if (progress >= 0.9f)
-    //     //     {
-    //     //         loadingBarImage.fillAmount = targetFill;
-    //     //         operation.allowSceneActivation = true;
-    //     //     }
-    //     //     yield return null;
-    //     // }
-    // }
     public void Start()
     {
         loadingBarImage.fillAmount = 0f;
+        buttonSkip.SetActive(false); // Pastikan buttonSkip disembunyikan saat awal
     }
 
-    public void LoadScene(int sceneIndex)
+    public void LoadScene(int stageID)
     {
-        StartCoroutine(LoadScene_Couroutine(sceneIndex));
+        currentStageID = stageID; // Simpan stageID yang dimuat
+        CheckSkipButton(stageID); // Periksa apakah buttonSkip harus muncul
+        StartCoroutine(LoadScene_Couroutine(stageID));
+    }
+
+    private void CheckSkipButton(int stageID)
+    {
+        // Periksa apakah stage sudah selesai
+        int completedStage = PlayerPrefs.GetInt("StageCompleted", -1);
+        if (completedStage >= stageID)
+        {
+            buttonSkip.SetActive(true); // Munculkan buttonSkip jika sudah pernah diselesaikan
+        }
+        else
+        {
+            buttonSkip.SetActive(false);
+        }
     }
 
     public IEnumerator LoadScene_Couroutine(int sceneIndex)
@@ -100,5 +78,20 @@ public class LoadingScreen : MonoBehaviour
 
         Debug.Log("Scene siap diaktifkan...");
         operation.allowSceneActivation = true; // Aktifkan scene setelah loading selesai
+    }
+
+    public void OnStageCompleted(int stageID)
+    {
+        // Simpan stage yang sudah diselesaikan
+        int currentCompleted = PlayerPrefs.GetInt("StageCompleted", -1);
+        if (stageID > currentCompleted)
+        {
+            PlayerPrefs.SetInt("StageCompleted", stageID);
+        }
+    }
+
+    public void loadSceneLangsung(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 }

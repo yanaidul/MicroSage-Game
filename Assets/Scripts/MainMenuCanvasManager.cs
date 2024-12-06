@@ -188,4 +188,9 @@ public class MainMenuCanvasManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("SelectedCategory", categoryIndex);
     }
+
+    public void OnStageCompleted(int stageID)
+    {
+        PlayerPrefs.SetInt("StageCompleted", stageID);
+    }
 }
