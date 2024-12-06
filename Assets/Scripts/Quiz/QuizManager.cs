@@ -5,64 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// public class QuizManager : MonoBehaviour
-// {
-//     public QuestionData[] categories;
-//     private QuestionData selectedCategory;
-//     private int currentQuestionIndex = 0;
-//     public TMP_Text questionText;
-//     public Image questionImage;
-//     public Button[] replyButtons;
-
-//     public void SelectCategory(int categoryIndex)
-//     {
-//         selectedCategory = categories[categoryIndex];
-//         currentQuestionIndex = 0;
-//         DisplayQuestion();
-//         DisplayQuestion();
-//     }
-
-//     void Start()
-//     {
-//         SelectCategory(0);
-//     }
-
-//     public void DisplayQuestion()
-//     {
-//         if (selectedCategory == null)
-//             return;
-
-//         var question = selectedCategory.questions[currentQuestionIndex];
-//         questionText.text = question.questionText;
-//         questionImage.sprite = question.QuestionImage;
-//         for (int i = 0; i < replyButtons.Length; i++)
-//         {
-//             TMP_Text buttonText = replyButtons[i].GetComponentInChildren<TMP_Text>();
-//             buttonText.text = question.replies[i];
-//         }
-//     }
-
-//     public void OnReplySelected(int replyIndex)
-//     {
-//         if (replyIndex == selectedCategory.questions[currentQuestionIndex].correctReplyIndex)
-//         {
-//             Debug.Log("Correct!");
-//         }
-//         else
-//         {
-//             Debug.Log("Incorrect!");
-//         }
-//         currentQuestionIndex++;
-//         if (currentQuestionIndex < selectedCategory.questions.Length)
-//         {
-//             DisplayQuestion();
-//         }
-//         else
-//         {
-//             Debug.Log("Quiz completed!");
-//         }
-//     }
-// }
 public class QuizManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -94,11 +36,17 @@ public class QuizManager : MonoBehaviour
     [Header("Game Finished Panel")]
     public GameObject gameFinishedPanel;
 
+    [Header("Time Countdown")]
+    public TextMeshProUGUI countdownText;
+
+    [SerializeField]
+    public float countdownDuration = 3f;
+
     void Start()
     {
         int selectedCategoryIndex = PlayerPrefs.GetInt("SelectedCategory", 0);
         gameFinishedPanel.SetActive(false);
-        SelectCategory(0);
+        SelectCategory(selectedCategoryIndex);
     }
 
     public void SelectCategory(int categoryIndex)
@@ -131,14 +79,12 @@ public class QuizManager : MonoBehaviour
         {
             if (i < question.replies.Length)
             {
-                // Tampilkan jawaban
                 replyButtons[i].gameObject.SetActive(true);
                 TextMeshProUGUI buttonText = replyButtons[i]
                     .GetComponentInChildren<TextMeshProUGUI>();
                 buttonText.text = question.replies[i];
 
-                // Tambahkan event listener untuk tombol
-                int replyIndex = i; // Buat salinan untuk menghindari closure issue
+                int replyIndex = i;
                 replyButtons[i].onClick.RemoveAllListeners();
                 replyButtons[i].onClick.AddListener(() => OnReplySelected(replyIndex));
             }
@@ -178,16 +124,50 @@ public class QuizManager : MonoBehaviour
         else
         {
             Debug.Log("Quiz completed!");
-            // ShowGameFinishedPanel();
+            ShowGameFinishedPanel();
+
             if (!string.IsNullOrEmpty(selectedCategory.targetScene))
             {
-                SceneManager.LoadScene(selectedCategory.targetScene);
+                // Panggil coroutine untuk memberi jeda sebelum pindah scene
+                StartCoroutine(LoadSceneWithDelay(selectedCategory.targetScene));
             }
             else
             {
                 Debug.LogWarning("Target scene tidak ditentukan untuk kategori ini.");
             }
         }
+    }
+
+    private IEnumerator LoadSceneWithDelay(string sceneName)
+    {
+        float remainingTime = countdownDuration;
+
+        while (remainingTime > 0)
+        {
+            // Perbarui teks countdown
+            if (countdownText != null)
+            {
+                countdownText.text = $"Memuat dalam {Mathf.Ceil(remainingTime)} detik...";
+            }
+
+            // Tunggu satu frame dan kurangi waktu
+            yield return new WaitForSeconds(1f);
+            remainingTime--;
+        }
+
+        // Bersihkan teks countdown setelah selesai
+        if (countdownText != null)
+        {
+            countdownText.text = string.Empty;
+        }
+
+        // Pindah ke scene yang ditentukan
+        OnPlayScene(sceneName);
+    }
+
+    public void OnPlayScene(string index)
+    {
+        SceneManager.LoadScene(index);
     }
 
     public void ShowCorrectReply()
@@ -219,41 +199,4 @@ public class QuizManager : MonoBehaviour
         gameFinishedPanel.SetActive(true);
         scoreText.text = "" + correctReplies + " / " + selectedCategory.questions.Length;
     }
-    // public void DisplayQuestion()
-    // {
-    //     if (selectedCategory == null)
-    //     {
-    //         Debug.LogError("No category selected");
-    //         return;
-    //     }
-    //     var question = selectedCategory.questions[currentQuestionIndex];
-    //     questionText.text = question.questionText;
-    //     questionImage.sprite = question.QuestionImage;
-    //     for (int i = 0; i < replyButtons.Length; i++)
-    //     {
-    //         TextMeshProUGUI buttonText = replyButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-    //         buttonText.text = question.replies[i];
-    //     }
-    // }
-
-    // public void OnReplySelected(int replyIndex)
-    // {
-    //     if (replyIndex == selectedCategory.questions[currentQuestionIndex].correctReplyIndex)
-    //     {
-    //         Debug.Log("Correct!");
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("Incorrect!");
-    //     }
-    //     currentQuestionIndex++;
-    //     if (currentQuestionIndex >= selectedCategory.questions.Length)
-    //     {
-    //         DisplayQuestion();
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("Quiz completed!");
-    //     }
-    // }
 }

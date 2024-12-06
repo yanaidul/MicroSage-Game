@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15a98a1ff426fa46ad89e729255c3c5, type: 3}
+  m_Name: OR
+  m_EditorClassIdentifier: 
+  category: OR
+  questions:
+  - questionText: Apa hasil dari operasi gerbang logika OR jika inputnya adalah A
+      = 0 dan B = 1?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak terdefinisi
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: 76e8a63f884947e42b7c4eec1a6d31d7, type: 3}
+  - questionText: IC 7432 adalah IC gerbang logika OR. Berapa banyak gerbang logika
+      OR yang terdapat dalam satu IC 7432?
+    replies:
+    - 2
+    - 3
+    - 4
+    - 6
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: de714d3761cf1844ea6d9a1b924f187e, type: 3}
+  - questionText: IC 4075 memiliki gerbang logika OR dengan berapa input per gerbangnya?
+    replies:
+    - 2
+    - 3
+    - 4
+    - 6
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: 93b23ea61f149f447bdcf4a84cce7a52, type: 3}
+  - questionText: Berapa banyak kemungkinan hasil yang bisa diperoleh dari gerbang
+      logika OR dengan dua input?
+    replies:
+    - 1
+    - 3
+    - 2
+    - 4
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: ' Bagaimana gerbang logika OR mempengaruhi rangkaian ketika salah
+      satu input dihubungkan ke ground (A = 0) dan input lainnya ke Vcc (B = 1)?'
+    replies:
+    - 'Output akan selalu 0 saat B = 1 '
+    - Output akan selalu 0
+    - Output tergantung pada nilai A dan B
+    - Output akan selalu 1
+    correctReplyIndex: 3
+    QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
+  targetScene: OR 1
