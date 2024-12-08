@@ -2933,7 +2933,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2e760d7116ca75647b1fb0fdbafe182b, type: 2}
   - {fileID: 11400000, guid: 29cfa5c3fab060546b2b0847a07f48fe, type: 2}
   - {fileID: 11400000, guid: 16a00d27891a5c64fac24f20fad80d36, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 19e993af4cc451a4586e9941e55d80af, type: 2}
+  - {fileID: 11400000, guid: 4c7afd8cce3a45642acd408e39702a68, type: 2}
   currentQuestionIndex: 0
   questionText: {fileID: 1216207868}
   questionImage: {fileID: 553935063}

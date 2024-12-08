@@ -7,10 +7,10 @@ public class SceneHandler : MonoBehaviour
 {
     //[SerializeField] GameEventNoParam _onNextLevelEvent;
     //[SerializeField] GameEventNoParam _onOnReturnToLevel1Event;
-    public void OnNextLevel()
+    public void OnNextLevel(int sceneIndex)
     {
         //_onNextLevelEvent.Raise();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void OnRestartScene()

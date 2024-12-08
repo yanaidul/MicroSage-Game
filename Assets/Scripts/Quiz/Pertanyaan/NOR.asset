@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15a98a1ff426fa46ad89e729255c3c5, type: 3}
+  m_Name: NOR
+  m_EditorClassIdentifier: 
+  category: NOR
+  questions:
+  - questionText: Berapa banyak gerbang NOR tiga input yang tersedia dalam IC 7427?
+    replies:
+    - 2
+    - 3
+    - 4
+    - 6
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: IC 7402 adalah IC yang digunakan untuk...?
+    replies:
+    - Gerbang logika NAND
+    - Gerbang logika NOR
+    - Gerbang logika AND
+    - Gerbang logika OR
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Berapa jumlah gerbang logika NOR yang tersedia pada IC 7402?
+    replies:
+    - 2
+    - 3
+    - 4
+    - 6
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: 'Tabel kebenaran IC 7402 dengan dua input: A = 1, B = 1. Berapakah
+      outputnya?'
+    replies:
+    - Tidak terdefinisi
+    - 1
+    - 0
+    - Tergantung sumber daya
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Apa output yang tepat pada baris pertama?
+    replies:
+    - 1
+    - 0
+    - Tidak terdefinisi
+    - Tergantung Nilai B
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
+  targetScene: NOR 1
