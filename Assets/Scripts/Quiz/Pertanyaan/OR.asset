@@ -48,7 +48,7 @@ MonoBehaviour:
     - 2
     - 4
     correctReplyIndex: 2
-    QuestionImage: {fileID: 0}
+    QuestionImage: {fileID: 21300000, guid: 76e8a63f884947e42b7c4eec1a6d31d7, type: 3}
   - questionText: ' Bagaimana gerbang logika OR mempengaruhi rangkaian ketika salah
       satu input dihubungkan ke ground (A = 0) dan input lainnya ke Vcc (B = 1)?'
     replies:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -76,8 +77,14 @@ public class CanvasManager : MonoBehaviour
     public void OnSetting()
     {
         _onPause.Raise();
+
         _settingPopUp.SetActive(true);
         _losePopUp.SetActive(false);
         _winPopUp.SetActive(false);
+    }
+
+    public void SceneKembali()
+    {
+        SceneManager.LoadScene(0);
     }
 }
