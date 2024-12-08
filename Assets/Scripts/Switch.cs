@@ -6,7 +6,8 @@ public class Switch : MonoBehaviour
 {
     [SerializeField] private GameEventNoParam _onPlaySwitchSFX;
 
-    [SerializeField] private Tile _referencedTile;
+    [SerializeField] private Tile _referencedTile1;
+    [SerializeField] private Tile _referencedTile2;
     [SerializeField] private Led _led;
     [SerializeField] private Field _field;
     [SerializeField] private GameObject _onSwitch;
@@ -14,7 +15,8 @@ public class Switch : MonoBehaviour
 
     private bool _isClicked = false;
     public bool IsClicked => _isClicked;
-    public Tile RefencedTile => _referencedTile;
+    public Tile RefencedTile1 => _referencedTile1;
+    public Tile RefencedTile2 => _referencedTile2;
     public Field Field => _field;
 
     private void Start()
@@ -31,15 +33,15 @@ public class Switch : MonoBehaviour
         {
             _onSwitch.SetActive(false);
             _offSwitch.SetActive(true);
-            _led.AddCurrentOnSwitch(-1);
             _isClicked = false;
+            _led.CheckSwitchOnValue();
         }
         else
         {
             _onSwitch.SetActive(true);
             _offSwitch.SetActive(false);
-            _led.AddCurrentOnSwitch(1);
             _isClicked = true;
+            _led.CheckSwitchOnValue();
         }
     }
 }

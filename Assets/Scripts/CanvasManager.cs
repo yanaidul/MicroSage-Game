@@ -16,8 +16,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private int _stageID;
     void Start()
     {
-        OnLoading();
-
+        //OnLoading();
+        OnGameplay();
     }
 
     public void OnLoading()
