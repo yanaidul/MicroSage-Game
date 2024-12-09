@@ -4,6 +4,7 @@ using UnityEngine;
 public class Field : MonoBehaviour
 {
     [SerializeField] private int _stageSolvedTarget;
+    [SerializeField] private Led _led;
 
     private Tile[,] _grid;
     private bool _canDrawConnection = false;
@@ -180,6 +181,7 @@ public class Field : MonoBehaviour
             }
         }
         _solved = 0;
+        _led.OnTurnOffLED();
         SetGameStatus(_solved, _amountToSolve.Count);
     }
 
@@ -192,6 +194,7 @@ public class Field : MonoBehaviour
             connection.HightlightReset();
         }
         if(_solved > 0) _solved--;
+        _led.OnTurnOffLED();
         SetGameStatus(_solved, _amountToSolve.Count);
 
     }
