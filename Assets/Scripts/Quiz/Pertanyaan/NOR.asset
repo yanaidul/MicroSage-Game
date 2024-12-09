@@ -55,4 +55,4 @@ MonoBehaviour:
     - Tergantung Nilai B
     correctReplyIndex: 0
     QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
-  targetScene: NOR 1
+  targetScene: AND 3 -  New
