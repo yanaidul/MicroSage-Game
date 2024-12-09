@@ -13,6 +13,9 @@ public class Switch : MonoBehaviour
     [SerializeField] private GameObject _offSwitch;
 
     private bool _isClicked = false;
+    public bool IsClicked => _isClicked;
+    public Tile RefencedTile => _referencedTile;
+    public Field Field => _field;
 
     private void Start()
     {
@@ -23,7 +26,6 @@ public class Switch : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!_referencedTile.isSolved || !_field.CheckCurrentSolvedStatus()) return;
         _onPlaySwitchSFX.Raise();
         if (_isClicked)
         {
