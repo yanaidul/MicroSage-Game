@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15a98a1ff426fa46ad89e729255c3c5, type: 3}
+  m_Name: NOT
+  m_EditorClassIdentifier: 
+  category: NOT
+  questions:
+  - questionText: Apakah fungsi utama dari IC 7404?
+    replies:
+    - Gerbang logika AND
+    - Gerbang logika OR
+    - Gerbang logika NAND
+    - Gerbang logika NOT
+    correctReplyIndex: 3
+    QuestionImage: {fileID: 0}
+  - questionText: Berapa jumlah gerbang NOT yang tersedia dalam IC 7404?
+    replies:
+    - 2
+    - 4
+    - 6
+    - 8
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Tegangan kerja maksimum yang didukung oleh IC 4069 adalah
+    replies:
+    - 3.3V
+    - 5 V
+    - 12 V
+    - 18 V
+    correctReplyIndex: 3
+    QuestionImage: {fileID: 0}
+  - questionText: IC 74HC04 termasuk dalam keluarga logika mana?
+    replies:
+    - TTL (Transistor-Transistor Logic)
+    - CMOS (Complementary Metal-Oxide Semiconductor)
+    - ECL (Emitter-Coupled Logic)
+    - RTL (Resistor-Transistor Logic)
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
+      sesuai?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak terdefinisi
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  targetScene: NOT 1
