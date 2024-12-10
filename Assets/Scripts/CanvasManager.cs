@@ -34,7 +34,8 @@ public class CanvasManager : MonoBehaviour
 
     void Start()
     {
-        OnLoading();
+        //OnLoading();
+        OnGameplay();
     }
 
     public void OnLoading()
@@ -77,14 +78,13 @@ public class CanvasManager : MonoBehaviour
     public void OnSetting()
     {
         _onPause.Raise();
-
         _settingPopUp.SetActive(true);
         _losePopUp.SetActive(false);
         _winPopUp.SetActive(false);
     }
 
-    public void SceneKembali()
+    public void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(sceneIndex);
     }
 }

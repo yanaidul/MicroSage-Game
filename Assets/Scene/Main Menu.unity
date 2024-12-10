@@ -824,8 +824,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3555542598223798453}
-        m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
+      - m_Target: {fileID: 3555542598223798454}
+        m_TargetAssemblyTypeName: LoadingScreen, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
@@ -836,7 +836,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnCategorySelected
         m_Mode: 3
@@ -848,7 +848,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenLoading
         m_Mode: 1
@@ -993,7 +993,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnCategorySelected
         m_Mode: 3
@@ -1005,7 +1005,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenLoading
         m_Mode: 1
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnResetButton
         m_Mode: 1
@@ -1909,7 +1909,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnCategorySelected
         m_Mode: 3
@@ -1921,7 +1921,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenLoading
         m_Mode: 1
@@ -2378,7 +2378,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenStageSelection
         m_Mode: 1
@@ -2548,7 +2548,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenMainMenu
         m_Mode: 1
@@ -2723,7 +2723,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnCategorySelected
         m_Mode: 3
@@ -2735,7 +2735,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenLoading
         m_Mode: 1
@@ -2918,7 +2918,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnCategorySelected
         m_Mode: 3
@@ -2930,7 +2930,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenLoading
         m_Mode: 1
@@ -3608,7 +3608,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnCategorySelected
         m_Mode: 3
@@ -3620,7 +3620,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenLoading
         m_Mode: 1
@@ -3802,7 +3802,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnCategorySelected
         m_Mode: 3
@@ -3814,7 +3814,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3555542598223798453}
+      - m_Target: {fileID: 3555542598223798455}
         m_TargetAssemblyTypeName: MainMenuCanvasManager, Assembly-CSharp
         m_MethodName: OnOpenLoading
         m_Mode: 1
@@ -4400,8 +4400,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3182724820548747333}
-  - component: {fileID: 3555542598223798453}
   - component: {fileID: 3555542598223798454}
+  - component: {fileID: 3555542598223798455}
   m_Layer: 0
   m_Name: Canvas Manager
   m_TagString: Untagged
@@ -4409,22 +4409,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3555542598223798453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3555542598223798452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 317f5453f235ce24796f1db089b68622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainMenuUI: {fileID: 1608271525}
-  _stageSelectionUI: {fileID: 1506405099}
-  _LoadingUI: {fileID: 98908992}
-  _ResetButton: {fileID: 295481564}
 --- !u!114 &3555542598223798454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4442,6 +4426,22 @@ MonoBehaviour:
   targetFill: 1
   delay: 3
   buttonSkip: {fileID: 445991243}
+--- !u!114 &3555542598223798455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555542598223798452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8ed57428cb22b4e92dc41581d1a58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMenuUI: {fileID: 1608271525}
+  _stageSelectionUI: {fileID: 1506405099}
+  _LoadingUI: {fileID: 98908992}
+  _ResetButton: {fileID: 295481564}
 --- !u!1001 &8419908663020554646
 PrefabInstance:
   m_ObjectHideFlags: 0
