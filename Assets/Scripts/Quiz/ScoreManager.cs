@@ -5,30 +5,36 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //
     public int score;
     public TextMeshProUGUI scoreText;
-    public const string ScoreKey = "Score";
+    public QuestionData selectedCategoryData;
+
+    public const string ScoreKey = "Score_Category_";
 
     void Start()
     {
-        LoadScore();
         UpdateScoreText();
+        Debug.Log("Start: Score is " + score);
     }
 
     public void AddScore(int points)
     {
         score += points;
         UpdateScoreText();
-        SaveScore();
+        if (selectedCategoryData != null)
+        {
+            SaveScore(selectedCategoryData.category);
+        }
     }
 
     public void SubtractScore(int points)
     {
         score -= points;
         UpdateScoreText();
-        SaveScore();
+        if (selectedCategoryData != null)
+        {
+            SaveScore(selectedCategoryData.category);
+        }
     }
 
     void UpdateScoreText()
@@ -36,22 +42,27 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "" + score.ToString();
     }
 
-    public void SaveScore()
+    public void SaveScore(string nameCategory)
     {
-        PlayerPrefs.SetInt(ScoreKey, score);
+        PlayerPrefs.SetInt(ScoreKey + nameCategory, score);
+
         PlayerPrefs.Save();
+        Debug.Log("Score for " + nameCategory + " has been saved.");
     }
 
-    public void LoadScore()
+    public void LoadScore(string nameCategory)
     {
-        if (PlayerPrefs.HasKey(ScoreKey))
+        if (PlayerPrefs.HasKey(ScoreKey + nameCategory))
         {
-            score = PlayerPrefs.GetInt(ScoreKey);
+            score = PlayerPrefs.GetInt(ScoreKey + nameCategory);
+            UpdateScoreText();
+            Debug.Log("Score for " + nameCategory + " has been loaded.");
         }
         else
         {
+            Debug.LogWarning("Score for " + nameCategory + " not found. Setting score to 0.");
             score = 0;
-            // UpdateScoreText();
+            UpdateScoreText();
         }
     }
 
