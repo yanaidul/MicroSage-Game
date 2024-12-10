@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -42,17 +43,19 @@ public class QuizManager : MonoBehaviour
     [SerializeField]
     public float countdownDuration = 3f;
 
-    void Start()
+    public void Start()
     {
         int selectedCategoryIndex = PlayerPrefs.GetInt("SelectedCategory", 0);
         gameFinishedPanel.SetActive(false);
         SelectCategory(selectedCategoryIndex);
+        LoadProgress(selectedCategory.category);
     }
 
     public void SelectCategory(int categoryIndex)
     {
         selectedCategory = categories[categoryIndex];
         currentQuestionIndex = 0;
+        scoreManager.selectedCategoryData = selectedCategory;
         DisplayQuestion();
     }
 
@@ -98,6 +101,15 @@ public class QuizManager : MonoBehaviour
 
     public void OnReplySelected(int replyIndex)
     {
+        if (
+            selectedCategory == null
+            || selectedCategory.questions == null
+            || selectedCategory.questions.Length == 0
+        )
+        {
+            Debug.LogError("Kategori atau pertanyaan belum diatur.");
+            return;
+        }
         // Periksa apakah jawaban benar
         if (replyIndex == selectedCategory.questions[currentQuestionIndex].correctReplyIndex)
         {
@@ -113,7 +125,7 @@ public class QuizManager : MonoBehaviour
 
         // Perbarui indeks pertanyaan
         currentQuestionIndex++;
-
+        SaveProgress();
         // Cek apakah sudah selesai atau tampilkan pertanyaan berikutnya
         if (currentQuestionIndex < selectedCategory.questions.Length)
         {
@@ -198,5 +210,38 @@ public class QuizManager : MonoBehaviour
     {
         gameFinishedPanel.SetActive(true);
         scoreText.text = "" + correctReplies + " / " + selectedCategory.questions.Length;
+    }
+
+    public void SaveProgress()
+    {
+        PlayerPrefs.SetInt(
+            "LastQuestion_Index_" + scoreManager.selectedCategoryData.category,
+            currentQuestionIndex
+        );
+        scoreManager.SaveScore(scoreManager.selectedCategoryData.category);
+    }
+
+    public void LoadProgress(string categoryName)
+    {
+        Debug.Log($"Mencoba memuat kategori: {categoryName}");
+
+        QuestionData category = Array.Find(categories, c => c.category == categoryName);
+
+        if (category != null)
+        {
+            scoreManager.selectedCategoryData = category;
+            scoreManager.LoadScore(category.category);
+            Debug.Log($"Kategori ditemukan: {category.category}, skor dimuat.");
+        }
+        else
+        {
+            Debug.LogError($"Kategori dengan nama {categoryName} tidak ditemukan.");
+            Debug.Log("Daftar kategori yang tersedia:");
+            foreach (var cat in categories)
+            {
+                Debug.Log($"Kategori: {cat.name}");
+            }
+        }
+        DisplayQuestion();
     }
 }

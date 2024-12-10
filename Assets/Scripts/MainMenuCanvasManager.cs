@@ -63,6 +63,10 @@ public class MainMenuCanvasManager : MonoBehaviour
         _mainMenuUI.SetActive(true);
         _LoadingUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
+
+        Debug.Log("Score Level 0: " + PlayerPrefs.GetInt("Score_Category_AND"));
+        Debug.Log("Score Level 1: " + PlayerPrefs.GetInt("Score_Category_OR"));
+        Debug.Log("Score Level 2: " + PlayerPrefs.GetInt("Score_Category_NAND"));
     }
 
     public void OnOpenStageSelection()
