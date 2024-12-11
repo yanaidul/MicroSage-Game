@@ -19,6 +19,9 @@ public class MainMenuCanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject _ResetButton;
 
+    [SerializeField]
+    private GameObject _Leaderboard;
+
     private void Start()
     {
         OnOpenMainMenu();
@@ -45,6 +48,14 @@ public class MainMenuCanvasManager : MonoBehaviour
         }
     }
 
+    public void OnOpenLeaderBoard()
+    {
+        _Leaderboard.SetActive(true);
+        _mainMenuUI.SetActive(false);
+        _stageSelectionUI.SetActive(true);
+        _LoadingUI.SetActive(false);
+    }
+
     public void OnResetButton()
     {
         PlayerPrefs.DeleteKey("NandStage");
@@ -60,6 +71,7 @@ public class MainMenuCanvasManager : MonoBehaviour
 
     public void OnOpenMainMenu()
     {
+        _Leaderboard.SetActive(false);
         _mainMenuUI.SetActive(true);
         _LoadingUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
@@ -72,6 +84,7 @@ public class MainMenuCanvasManager : MonoBehaviour
     public void OnOpenStageSelection()
     {
         _LoadingUI.SetActive(false);
+        _Leaderboard.SetActive(false);
         _stageSelectionUI.SetActive(true);
         _mainMenuUI.SetActive(false);
         // _icAND.SetActive(false);
@@ -88,6 +101,7 @@ public class MainMenuCanvasManager : MonoBehaviour
         _LoadingUI.SetActive(true);
         _mainMenuUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
+        _Leaderboard.SetActive(false);
     }
 
     // public void OnOpenICAnd()
