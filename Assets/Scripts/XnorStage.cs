@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class XnorStage : MonoBehaviour
 {
-    [SerializeField] private List<Button> _xnorStages = new List<Button>();
+    [SerializeField]
+    private List<Button> _XnorStage;
     private int _unlockedLevel = 1;
 
     private void Start()
     {
-        for (int i = 0; i < _xnorStages.Count; i++)
+        for (int i = 0; i < _XnorStage.Count; i++)
         {
-            if (i != 0) _xnorStages[i].interactable = false;
+            if (i != 0)
+                _XnorStage[i].interactable = false;
         }
 
-        if (PlayerPrefs.HasKey("XnorStage")
+        if (PlayerPrefs.HasKey("XnorStage"))
         {
             _unlockedLevel = PlayerPrefs.GetInt("XnorStage", 1);
         }
@@ -24,7 +26,7 @@ public class XnorStage : MonoBehaviour
 
         for (int i = 0; i < _unlockedLevel; i++)
         {
-            _xnorStages[i].interactable = true;
+            _XnorStage[i].interactable = true;
         }
     }
 }

@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class XorStage : MonoBehaviour
 {
-    [SerializeField] private List<Button> _xorStages = new List<Button>();
+    [SerializeField]
+    private List<Button> _XorStage;
     private int _unlockedLevel = 1;
 
     private void Start()
     {
-        for (int i = 0; i < _xorStages.Count; i++)
+        for (int i = 0; i < _XorStage.Count; i++)
         {
-            if (i != 0) _xorStages[i].interactable = false;
+            if (i != 0)
+                _XorStage[i].interactable = false;
         }
 
-        if (PlayerPrefs.HasKey("XorStage")
+        if (PlayerPrefs.HasKey("XorStage"))
         {
             _unlockedLevel = PlayerPrefs.GetInt("XorStage", 1);
         }
@@ -24,7 +26,7 @@ public class XorStage : MonoBehaviour
 
         for (int i = 0; i < _unlockedLevel; i++)
         {
-            _xorStages[i].interactable = true;
+            _XorStage[i].interactable = true;
         }
     }
 }
