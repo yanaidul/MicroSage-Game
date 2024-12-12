@@ -90,6 +90,21 @@ public class MainMenuCanvasManager : MonoBehaviour
         PlayerPrefs.DeleteKey("Score_Category_NOT");
         PlayerPrefs.DeleteKey("Score_Category_XOR");
         PlayerPrefs.DeleteKey("Score_Category_XNOR");
+        PlayerPrefs.DeleteKey("CorrectReplies_AND");
+        PlayerPrefs.DeleteKey("CorrectReplies_OR");
+        PlayerPrefs.DeleteKey("CorrectReplies_NAND");
+        PlayerPrefs.DeleteKey("CorrectReplies_NOR");
+        PlayerPrefs.DeleteKey("CorrectReplies_NOT");
+        PlayerPrefs.DeleteKey("CorrectReplies_XOR");
+        PlayerPrefs.DeleteKey("CorrectReplies_XNOR");
+        PlayerPrefs.DeleteKey("WrongReplies_AND");
+        PlayerPrefs.DeleteKey("WrongReplies_OR");
+        PlayerPrefs.DeleteKey("WrongReplies_NAND");
+        PlayerPrefs.DeleteKey("WrongReplies_NOR");
+        PlayerPrefs.DeleteKey("WrongReplies_NOT");
+        PlayerPrefs.DeleteKey("WrongReplies_XOR");
+        PlayerPrefs.DeleteKey("WrongReplies_XNOR");
+
         Debug.Log("All score data has been reset.");
     }
 
