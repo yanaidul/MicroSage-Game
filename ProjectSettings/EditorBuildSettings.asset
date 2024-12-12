@@ -9,48 +9,48 @@ EditorBuildSettings:
     path: Assets/Scene/Main Menu.unity
     guid: 043224c4cb019764dbc9ea044f768d71
   - enabled: 1
-    path: Assets/Scene/AND 1.unity
+    path: Assets/Scene/AND 1 New.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scene/AND 2.unity
+    path: Assets/Scene/AND 2 New.unity
     guid: 2630a332345882b468cc4e6ffc40480a
   - enabled: 1
-    path: Assets/Scene/AND 3.unity
+    path: Assets/Scene/AND 3 New.unity
     guid: 937f5a87f47527b4fb046e8567c2b5a2
   - enabled: 1
-    path: Assets/Scene/Deprecated/OR 1.unity
-    guid: ec205ac254046e14c9383472d37e3598
+    path: Assets/Scene/OR 1 New.unity
+    guid: e627dee4276e84548979cc7b06b70b7f
   - enabled: 1
-    path: Assets/Scene/Deprecated/OR 2.unity
-    guid: 152e2264f35c64e418d0b37403fb7f1b
+    path: Assets/Scene/OR 2 New.unity
+    guid: e71daab40f732e1419dac4230444d8a2
   - enabled: 1
-    path: Assets/Scene/Deprecated/OR 3.unity
-    guid: 39f94b0b6a75dc94490150270849119d
+    path: Assets/Scene/OR 3 New.unity
+    guid: 0f95b40aa0f4ac44ca9efeb3091d73e6
   - enabled: 1
-    path: Assets/Scene/Deprecated/NAND 1.unity
-    guid: 5db04e579374b164eb503aa9fe4e4b8c
+    path: Assets/Scene/NAND 1 New.unity
+    guid: a83eb9a10475a08449640c87052c3f4e
   - enabled: 1
-    path: Assets/Scene/Deprecated/NAND 2.unity
-    guid: 5429fbe3f064971458408eb0b6abad52
+    path: Assets/Scene/NAND 2 New.unity
+    guid: 1fd2be211308f34468f0465538118cc0
   - enabled: 1
-    path: Assets/Scene/Deprecated/NAND 3.unity
-    guid: 4f5701c774ea14c418f94f71c0b1185f
+    path: Assets/Scene/NAND 3  New.unity
+    guid: fcb076dcd2b72494c9c5b9736f8f62e4
   - enabled: 1
-    path: Assets/Scene/Deprecated/NOR 1.unity
-    guid: 2114664ac57915a4aa2790caa8655d27
+    path: Assets/Scene/NOR 1 New.unity
+    guid: 154e1546763f04441a06822ad017182d
   - enabled: 1
-    path: Assets/Scene/Deprecated/NOR 2.unity
-    guid: ab93bc96bcf63c646b859d681d5036c1
+    path: Assets/Scene/NOR 2 New.unity
+    guid: 0446cb66a5431da4ab6cd13fd2ab6c61
   - enabled: 1
-    path: Assets/Scene/Deprecated/NOR 3.unity
-    guid: 815fd6c9258d2c74e883118ecf305c3c
+    path: Assets/Scene/NOR 3 New.unity
+    guid: ba51e9a0d31777643a020330563ebdfe
   - enabled: 1
-    path: Assets/Scene/Deprecated/NOT 1.unity
-    guid: 715d9679a871228408de2c1e1b16345c
+    path: Assets/Scene/NOT 1 New.unity
+    guid: cdf07b7e102aeca42b490fda5c9c180e
   - enabled: 1
-    path: Assets/Scene/Deprecated/NOT 2.unity
-    guid: 5e4427b01f025d941a27e397a88cfc18
+    path: Assets/Scene/NOT 2 New.unity
+    guid: fef4cf953abc1d64e9d2332a1158e62f
   - enabled: 1
-    path: Assets/Scene/Deprecated/NOT 3.unity
-    guid: 9c3c31f1d1ab02c4894671b034a9017c
+    path: Assets/Scene/NOT 3 New.unity
+    guid: 6327f59d46ac9164590ccce5212d337b
   m_configObjects: {}
