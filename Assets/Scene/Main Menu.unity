@@ -7989,6 +7989,7 @@ MonoBehaviour:
   _stageSelectionUI: {fileID: 1506405099}
   _LoadingUI: {fileID: 98908992}
   _ResetButton: {fileID: 295481564}
+  leaderboardManager: {fileID: 990069367}
   _Leaderboard: {fileID: 2098158998}
 --- !u!1001 &8419908663020554646
 PrefabInstance:

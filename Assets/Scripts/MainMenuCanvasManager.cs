@@ -19,6 +19,9 @@ public class MainMenuCanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject _ResetButton;
 
+    [Header("Leaderboard Screen")]
+    public LeaderboardManager leaderboardManager;
+
     [SerializeField]
     private GameObject _Leaderboard;
 
@@ -75,37 +78,37 @@ public class MainMenuCanvasManager : MonoBehaviour
         _mainMenuUI.SetActive(true);
         _LoadingUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
-
-        Debug.Log("Score Level 0: " + PlayerPrefs.GetInt("Score_Category_AND"));
-        Debug.Log("Score Level 1: " + PlayerPrefs.GetInt("Score_Category_OR"));
-        Debug.Log("Score Level 2: " + PlayerPrefs.GetInt("Score_Category_NAND"));
     }
 
-    public void onResetScore()
+    public void OnResetScore()
     {
-        PlayerPrefs.DeleteKey("Score_Category_AND");
-        PlayerPrefs.DeleteKey("Score_Category_OR");
-        PlayerPrefs.DeleteKey("Score_Category_NAND");
-        PlayerPrefs.DeleteKey("Score_Category_NOR");
-        PlayerPrefs.DeleteKey("Score_Category_NOT");
-        PlayerPrefs.DeleteKey("Score_Category_XOR");
-        PlayerPrefs.DeleteKey("Score_Category_XNOR");
-        PlayerPrefs.DeleteKey("CorrectReplies_AND");
-        PlayerPrefs.DeleteKey("CorrectReplies_OR");
-        PlayerPrefs.DeleteKey("CorrectReplies_NAND");
-        PlayerPrefs.DeleteKey("CorrectReplies_NOR");
-        PlayerPrefs.DeleteKey("CorrectReplies_NOT");
-        PlayerPrefs.DeleteKey("CorrectReplies_XOR");
-        PlayerPrefs.DeleteKey("CorrectReplies_XNOR");
-        PlayerPrefs.DeleteKey("WrongReplies_AND");
-        PlayerPrefs.DeleteKey("WrongReplies_OR");
-        PlayerPrefs.DeleteKey("WrongReplies_NAND");
-        PlayerPrefs.DeleteKey("WrongReplies_NOR");
-        PlayerPrefs.DeleteKey("WrongReplies_NOT");
-        PlayerPrefs.DeleteKey("WrongReplies_XOR");
-        PlayerPrefs.DeleteKey("WrongReplies_XNOR");
+        string[] categories = { "AND", "OR", "NAND", "NOR", "NOT", "XOR", "XNOR" };
 
-        Debug.Log("All score data has been reset.");
+        foreach (string category in categories)
+        {
+            PlayerPrefs.DeleteKey($"LastQuestion_Index_{category}");
+            PlayerPrefs.DeleteKey($"Score_Category_{category}");
+            PlayerPrefs.DeleteKey($"CorrectReplies_{category}");
+            PlayerPrefs.DeleteKey($"WrongReplies_{category}");
+        }
+
+        ResetToDefaultValues();
+        UpdateScoreUI();
+    }
+
+    private void UpdateScoreUI()
+    {
+        leaderboardManager.SetLeaderboardStatus();
+    }
+
+    private void ResetToDefaultValues()
+    {
+        foreach (string category in new[] { "AND", "OR", "NAND", "NOR", "NOT", "XOR", "XNOR" })
+        {
+            PlayerPrefs.SetInt($"Score_Category_{category}", 0);
+            PlayerPrefs.SetInt($"CorrectReplies_{category}", 0);
+            PlayerPrefs.SetInt($"WrongReplies_{category}", 0);
+        }
     }
 
     public void closeButton()
