@@ -71,27 +71,34 @@ public class QuizManager : MonoBehaviour
             Debug.LogError("No category selected");
             return;
         }
-        ResetButtonColors();
-        var question = selectedCategory.questions[currentQuestionIndex];
-        questionText.text = question.questionText;
-        questionImage.sprite = question.QuestionImage;
 
-        // Validasi jumlah tombol
-        if (replyButtons.Length < question.replies.Length)
+        ResetButtonColors(); // Reset warna tombol jika diperlukan
+
+        // Ambil pertanyaan berdasarkan indeks
+        var question = selectedCategory.questions[currentQuestionIndex];
+
+        // Tampilkan teks pertanyaan
+        questionText.text = question.questionText;
+
+        // Tampilkan gambar pertanyaan jika ada
+        if (question.QuestionImage != null)
         {
-            Debug.LogError("Not enough buttons for replies");
-            return;
+            questionImage.sprite = question.QuestionImage;
         }
 
+        // Validasi jumlah tombol yang sesuai dengan jumlah jawaban
+        int totalReplies = question.replies.Length;
         for (int i = 0; i < replyButtons.Length; i++)
         {
-            if (i < question.replies.Length)
+            if (i < totalReplies)
             {
+                // Jika tombol diperlukan, pastikan tombol aktif dan terhubung dengan jawaban
                 replyButtons[i].gameObject.SetActive(true);
                 TextMeshProUGUI buttonText = replyButtons[i]
                     .GetComponentInChildren<TextMeshProUGUI>();
                 buttonText.text = question.replies[i];
 
+                // Mendaftarkan event listener hanya jika belum ada
                 int replyIndex = i;
                 replyButtons[i].onClick.RemoveAllListeners();
                 replyButtons[i].onClick.AddListener(() => OnReplySelected(replyIndex));
@@ -120,7 +127,7 @@ public class QuizManager : MonoBehaviour
         {
             scoreManager.AddScore(correctReplyScore);
             correctReplies++;
-            SaveCorrectReplies();
+            SaveProgress();
             correctRepliesText.text = correctReplies.ToString();
             Debug.Log("Correct!");
         }
@@ -128,7 +135,7 @@ public class QuizManager : MonoBehaviour
         {
             wrongReplies++;
             scoreManager.SubtractScore(wrongReplyScore);
-            SaveWrongReplies();
+            SaveProgress();
             wrongRepliesText.text = wrongReplies.ToString();
             Debug.Log("Incorrect!");
         }
@@ -158,24 +165,6 @@ public class QuizManager : MonoBehaviour
                 Debug.LogWarning("Target scene tidak ditentukan untuk kategori ini.");
             }
         }
-    }
-
-    public void SaveCorrectReplies()
-    {
-        PlayerPrefs.SetInt(
-            "CorrectReplies_" + scoreManager.selectedCategoryData.category,
-            correctReplies
-        );
-        PlayerPrefs.Save();
-    }
-
-    public void SaveWrongReplies()
-    {
-        PlayerPrefs.SetInt(
-            "WrongReplies_" + scoreManager.selectedCategoryData.category,
-            wrongReplies
-        );
-        PlayerPrefs.Save();
     }
 
     private IEnumerator LoadSceneWithDelay(string sceneName)
@@ -237,16 +226,26 @@ public class QuizManager : MonoBehaviour
     public void ShowGameFinishedPanel()
     {
         gameFinishedPanel.SetActive(true);
-        scoreText.text = "" + correctReplies + " / " + selectedCategory.questions.Length;
+        var scoreAkhir =
+            PlayerPrefs.GetInt("CorrectReplies_" + selectedCategory.category, correctReplies)
+            - PlayerPrefs.GetInt("WrongReplies_" + selectedCategory.category, wrongReplies);
+        scoreText.text = "" + scoreAkhir.ToString() + " / " + selectedCategory.questions.Length;
     }
 
     public void SaveProgress()
     {
         PlayerPrefs.SetInt(
+            "CorrectReplies_" + scoreManager.selectedCategoryData.category,
+            correctReplies
+        );
+        PlayerPrefs.SetInt(
             "LastQuestion_Index_" + scoreManager.selectedCategoryData.category,
             currentQuestionIndex
         );
-
+        PlayerPrefs.SetInt(
+            "WrongReplies_" + scoreManager.selectedCategoryData.category,
+            wrongReplies
+        );
         PlayerPrefs.Save();
         Debug.Log("Progress saved");
         scoreManager.SaveScore(scoreManager.selectedCategoryData.category);
@@ -256,19 +255,46 @@ public class QuizManager : MonoBehaviour
     {
         Debug.Log($"Mencoba memuat kategori: {categoryName}");
 
+        // Temukan kategori berdasarkan nama
         QuestionData category = Array.Find(categories, c => c.category == categoryName);
 
         if (category != null)
         {
+            // Set data kategori yang dipilih
             scoreManager.selectedCategoryData = category;
+
+            // Muat skor untuk kategori
             scoreManager.LoadScore(category.category);
             Debug.Log($"Kategori ditemukan: {category.category}, skor dimuat.");
-            correctRepliesText.text = PlayerPrefs
-                .GetInt("CorrectReplies_" + category.category, 0)
-                .ToString();
-            wrongRepliesText.text = PlayerPrefs
-                .GetInt("WrongReplies_" + category.category, 0)
-                .ToString();
+
+            // Muat jumlah jawaban benar dan salah dari PlayerPrefs
+            int correct = PlayerPrefs.GetInt("CorrectReplies_" + category.category, 0);
+            int wrong = PlayerPrefs.GetInt("WrongReplies_" + category.category, 0);
+
+            // Update tampilan teks jawaban benar dan salah
+            correctRepliesText.text = correct.ToString();
+            wrongRepliesText.text = wrong.ToString();
+
+            // Ambil indeks pertanyaan terakhir dari PlayerPrefs dan lanjutkan dari sana
+            currentQuestionIndex = PlayerPrefs.GetInt("LastQuestion_Index_" + category, 0);
+            if (currentQuestionIndex >= category.questions.Length)
+            {
+                ShowGameFinishedPanel();
+                if (!string.IsNullOrEmpty(selectedCategory.targetScene))
+                {
+                    // Panggil coroutine untuk memberi jeda sebelum pindah scene
+                    StartCoroutine(LoadSceneWithDelay(selectedCategory.targetScene));
+                }
+                else
+                {
+                    Debug.LogWarning("Target scene tidak ditentukan untuk kategori ini.");
+                }
+            }
+            else
+            {
+                DisplayQuestion();
+            }
+            Debug.Log($"Indeks pertanyaan terakhir: {currentQuestionIndex}");
         }
         else
         {
@@ -276,9 +302,11 @@ public class QuizManager : MonoBehaviour
             Debug.Log("Daftar kategori yang tersedia:");
             foreach (var cat in categories)
             {
-                Debug.Log($"Kategori: {cat.name}");
+                Debug.Log($"Kategori: {cat.category}");
             }
         }
+
+        // Menampilkan pertanyaan berdasarkan indeks yang diambil
         DisplayQuestion();
     }
 }
