@@ -55,4 +55,5 @@ MonoBehaviour:
     - Tidak terdefinisi
     correctReplyIndex: 1
     QuestionImage: {fileID: 0}
-  targetScene: NOT 1
+  targetScene: AND 3 - New
+  score: 0

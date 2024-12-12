@@ -58,4 +58,5 @@ MonoBehaviour:
     - Output akan selalu 1
     correctReplyIndex: 3
     QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
-  targetScene: OR 1
+  targetScene: AND 2 - New
+  score: 0

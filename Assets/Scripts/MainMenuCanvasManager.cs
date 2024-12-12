@@ -19,6 +19,9 @@ public class MainMenuCanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject _ResetButton;
 
+    [SerializeField]
+    private GameObject _Leaderboard;
+
     private void Start()
     {
         OnOpenMainMenu();
@@ -45,6 +48,14 @@ public class MainMenuCanvasManager : MonoBehaviour
         }
     }
 
+    public void OnOpenLeaderBoard()
+    {
+        _Leaderboard.SetActive(true);
+        _mainMenuUI.SetActive(false);
+        _stageSelectionUI.SetActive(true);
+        _LoadingUI.SetActive(false);
+    }
+
     public void OnResetButton()
     {
         PlayerPrefs.DeleteKey("NandStage");
@@ -60,6 +71,7 @@ public class MainMenuCanvasManager : MonoBehaviour
 
     public void OnOpenMainMenu()
     {
+        _Leaderboard.SetActive(false);
         _mainMenuUI.SetActive(true);
         _LoadingUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
@@ -69,9 +81,42 @@ public class MainMenuCanvasManager : MonoBehaviour
         Debug.Log("Score Level 2: " + PlayerPrefs.GetInt("Score_Category_NAND"));
     }
 
+    public void onResetScore()
+    {
+        PlayerPrefs.DeleteKey("Score_Category_AND");
+        PlayerPrefs.DeleteKey("Score_Category_OR");
+        PlayerPrefs.DeleteKey("Score_Category_NAND");
+        PlayerPrefs.DeleteKey("Score_Category_NOR");
+        PlayerPrefs.DeleteKey("Score_Category_NOT");
+        PlayerPrefs.DeleteKey("Score_Category_XOR");
+        PlayerPrefs.DeleteKey("Score_Category_XNOR");
+        PlayerPrefs.DeleteKey("CorrectReplies_AND");
+        PlayerPrefs.DeleteKey("CorrectReplies_OR");
+        PlayerPrefs.DeleteKey("CorrectReplies_NAND");
+        PlayerPrefs.DeleteKey("CorrectReplies_NOR");
+        PlayerPrefs.DeleteKey("CorrectReplies_NOT");
+        PlayerPrefs.DeleteKey("CorrectReplies_XOR");
+        PlayerPrefs.DeleteKey("CorrectReplies_XNOR");
+        PlayerPrefs.DeleteKey("WrongReplies_AND");
+        PlayerPrefs.DeleteKey("WrongReplies_OR");
+        PlayerPrefs.DeleteKey("WrongReplies_NAND");
+        PlayerPrefs.DeleteKey("WrongReplies_NOR");
+        PlayerPrefs.DeleteKey("WrongReplies_NOT");
+        PlayerPrefs.DeleteKey("WrongReplies_XOR");
+        PlayerPrefs.DeleteKey("WrongReplies_XNOR");
+
+        Debug.Log("All score data has been reset.");
+    }
+
+    public void closeButton()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void OnOpenStageSelection()
     {
         _LoadingUI.SetActive(false);
+        _Leaderboard.SetActive(false);
         _stageSelectionUI.SetActive(true);
         _mainMenuUI.SetActive(false);
         // _icAND.SetActive(false);
@@ -88,6 +133,7 @@ public class MainMenuCanvasManager : MonoBehaviour
         _LoadingUI.SetActive(true);
         _mainMenuUI.SetActive(false);
         _stageSelectionUI.SetActive(false);
+        _Leaderboard.SetActive(false);
     }
 
     // public void OnOpenICAnd()

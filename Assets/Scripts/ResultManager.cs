@@ -6,26 +6,47 @@ using UnityEngine;
 
 public class ResultManager : MonoBehaviour
 {
-    [SerializeField] private Timer _timer;
-    [SerializeField] private List<GameObject> _stars = new();
-    [SerializeField] private TextMeshProUGUI _timerWinUIText;
-    [SerializeField] private TextMeshProUGUI _cableLeftText;
+    [SerializeField]
+    private Timer _timer;
 
-    [SerializeField] private int _switchPatternToWin = 4;
-    [SerializeField] private GameEventNoParam _onTurnOnLED;
-    [SerializeField] private GameEventNoParam _onTurnOffLED;
-    [SerializeField] private GameEventNoParam _onWin;
+    [SerializeField]
+    private List<GameObject> _stars = new();
+
+    [SerializeField]
+    private TextMeshProUGUI _timerWinUIText;
+
+    [SerializeField]
+    private TextMeshProUGUI _cableLeftText;
+
+    [SerializeField]
+    private int _switchPatternToWin = 4;
+
+    [SerializeField]
+    private GameEventNoParam _onTurnOnLED;
+
+    [SerializeField]
+    private GameEventNoParam _onTurnOffLED;
+
+    [SerializeField]
+    private GameEventNoParam _onWin;
 
     private bool _isHighxHighClear = false;
     private bool _isHighxLowClear = false;
     private bool _isLowxHighClear = false;
     private bool _isLowxLowClear = false;
 
+    [Header("Sisa waktu index")]
+    [SerializeField]
+    private int _bintang2Detik;
+
+    [SerializeField]
+    private int _bintang1Detik;
+
     public void OnCheckCable(bool isSwitch1On, bool isSwitch2On)
     {
-        if(isSwitch1On && isSwitch2On)
+        if (isSwitch1On && isSwitch2On)
         {
-            if(!_isHighxHighClear)
+            if (!_isHighxHighClear)
             {
                 _isHighxHighClear = true;
                 _switchPatternToWin--;
@@ -43,7 +64,6 @@ public class ResultManager : MonoBehaviour
                 _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
             }
             _onTurnOffLED.Raise();
-
         }
 
         if (!isSwitch1On && isSwitch2On)
@@ -68,7 +88,8 @@ public class ResultManager : MonoBehaviour
             _onTurnOffLED.Raise();
         }
 
-        if (_switchPatternToWin == 0) _onWin.Raise();
+        if (_switchPatternToWin == 0)
+            _onWin.Raise();
     }
 
     public void OnWin()
@@ -78,11 +99,11 @@ public class ResultManager : MonoBehaviour
         {
             item.gameObject.SetActive(true);
         }
-        if(_timer.OnReturnTimeLeftValueAfterWin() <= 150)
+        if (_timer.OnReturnTimeLeftValueAfterWin() <= _bintang2Detik)
         {
             _stars[2].gameObject.SetActive(false);
         }
-        if (_timer.OnReturnTimeLeftValueAfterWin() <= 100)
+        if (_timer.OnReturnTimeLeftValueAfterWin() <= _bintang1Detik)
         {
             _stars[1].gameObject.SetActive(false);
         }

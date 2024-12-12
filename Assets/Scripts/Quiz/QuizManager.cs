@@ -33,6 +33,11 @@ public class QuizManager : MonoBehaviour
     [Header("correctReplyIndex")]
     public int correctReplyIndex;
     int correctReplies;
+    int wrongReplies;
+
+    [Header("Index Benar / salah")]
+    public TextMeshProUGUI correctRepliesText;
+    public TextMeshProUGUI wrongRepliesText;
 
     [Header("Game Finished Panel")]
     public GameObject gameFinishedPanel;
@@ -115,11 +120,16 @@ public class QuizManager : MonoBehaviour
         {
             scoreManager.AddScore(correctReplyScore);
             correctReplies++;
+            SaveCorrectReplies();
+            correctRepliesText.text = correctReplies.ToString();
             Debug.Log("Correct!");
         }
         else
         {
+            wrongReplies++;
             scoreManager.SubtractScore(wrongReplyScore);
+            SaveWrongReplies();
+            wrongRepliesText.text = wrongReplies.ToString();
             Debug.Log("Incorrect!");
         }
 
@@ -148,6 +158,24 @@ public class QuizManager : MonoBehaviour
                 Debug.LogWarning("Target scene tidak ditentukan untuk kategori ini.");
             }
         }
+    }
+
+    public void SaveCorrectReplies()
+    {
+        PlayerPrefs.SetInt(
+            "CorrectReplies_" + scoreManager.selectedCategoryData.category,
+            correctReplies
+        );
+        PlayerPrefs.Save();
+    }
+
+    public void SaveWrongReplies()
+    {
+        PlayerPrefs.SetInt(
+            "WrongReplies_" + scoreManager.selectedCategoryData.category,
+            wrongReplies
+        );
+        PlayerPrefs.Save();
     }
 
     private IEnumerator LoadSceneWithDelay(string sceneName)
@@ -218,6 +246,9 @@ public class QuizManager : MonoBehaviour
             "LastQuestion_Index_" + scoreManager.selectedCategoryData.category,
             currentQuestionIndex
         );
+
+        PlayerPrefs.Save();
+        Debug.Log("Progress saved");
         scoreManager.SaveScore(scoreManager.selectedCategoryData.category);
     }
 
@@ -232,6 +263,12 @@ public class QuizManager : MonoBehaviour
             scoreManager.selectedCategoryData = category;
             scoreManager.LoadScore(category.category);
             Debug.Log($"Kategori ditemukan: {category.category}, skor dimuat.");
+            correctRepliesText.text = PlayerPrefs
+                .GetInt("CorrectReplies_" + category.category, 0)
+                .ToString();
+            wrongRepliesText.text = PlayerPrefs
+                .GetInt("WrongReplies_" + category.category, 0)
+                .ToString();
         }
         else
         {
