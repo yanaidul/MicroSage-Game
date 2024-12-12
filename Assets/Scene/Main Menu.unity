@@ -4126,7 +4126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1608271526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4421,10 +4421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317f5453f235ce24796f1db089b68622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenuUI: {fileID: 1608271525}
-  _stageSelectionUI: {fileID: 1506405099}
-  _LoadingUI: {fileID: 98908992}
-  _ResetButton: {fileID: 295481564}
 --- !u!114 &3555542598223798454
 MonoBehaviour:
   m_ObjectHideFlags: 0
