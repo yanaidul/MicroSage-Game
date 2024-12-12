@@ -33,6 +33,11 @@ public class QuizManager : MonoBehaviour
     [Header("correctReplyIndex")]
     public int correctReplyIndex;
     int correctReplies;
+    int wrongReplies;
+
+    [Header("Index Benar / salah")]
+    public TextMeshProUGUI correctRepliesText;
+    public TextMeshProUGUI wrongRepliesText;
 
     [Header("Game Finished Panel")]
     public GameObject gameFinishedPanel;
@@ -115,10 +120,13 @@ public class QuizManager : MonoBehaviour
         {
             scoreManager.AddScore(correctReplyScore);
             correctReplies++;
+            correctRepliesText.text = correctReplies.ToString();
             Debug.Log("Correct!");
         }
         else
         {
+            wrongReplies++;
+            wrongRepliesText.text = wrongReplies.ToString();
             scoreManager.SubtractScore(wrongReplyScore);
             Debug.Log("Incorrect!");
         }

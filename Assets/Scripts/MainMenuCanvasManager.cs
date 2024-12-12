@@ -81,6 +81,23 @@ public class MainMenuCanvasManager : MonoBehaviour
         Debug.Log("Score Level 2: " + PlayerPrefs.GetInt("Score_Category_NAND"));
     }
 
+    public void onResetScore()
+    {
+        PlayerPrefs.DeleteKey("Score_Category_AND");
+        PlayerPrefs.DeleteKey("Score_Category_OR");
+        PlayerPrefs.DeleteKey("Score_Category_NAND");
+        PlayerPrefs.DeleteKey("Score_Category_NOR");
+        PlayerPrefs.DeleteKey("Score_Category_NOT");
+        PlayerPrefs.DeleteKey("Score_Category_XOR");
+        PlayerPrefs.DeleteKey("Score_Category_XNOR");
+        Debug.Log("All score data has been reset.");
+    }
+
+    public void closeButton()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void OnOpenStageSelection()
     {
         _LoadingUI.SetActive(false);
