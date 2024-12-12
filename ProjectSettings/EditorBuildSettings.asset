@@ -9,6 +9,7 @@ EditorBuildSettings:
     path: Assets/Scene/Main Menu.unity
     guid: af130b1a6cb81084cb4c055e0f86cb53
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scene/AND 1 -  New.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -16,6 +17,15 @@ EditorBuildSettings:
     guid: 2630a332345882b468cc4e6ffc40480a
   - enabled: 1
     path: Assets/Scene/AND 3 - New.unity
+=======
+    path: Assets/Scene/AND 1 New.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scene/AND 2 New.unity
+    guid: 2630a332345882b468cc4e6ffc40480a
+  - enabled: 1
+    path: Assets/Scene/AND 3 New.unity
+>>>>>>> RevisiBranchBeforeMerge
     guid: 937f5a87f47527b4fb046e8567c2b5a2
   - enabled: 1
     path: Assets/Scene/Deprecated/OR 1.unity
@@ -59,4 +69,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/QUIZ.unity
     guid: ad2ef274bd099204893b5d0ad127d139
+  - enabled: 1
+    path: Assets/Scene/XOR 1 New.unity
+    guid: 66e159d2452bb3344bf7b50c0cf02cfe
+  - enabled: 1
+    path: Assets/Scene/XOR 2 New.unity
+    guid: 4580d03b18cabdc4f8b6db7e77143ec3
+  - enabled: 1
+    path: Assets/Scene/XOR 3 New.unity
+    guid: 647c3cfd0e6df9740a0b0cfeab3c5dcf
+  - enabled: 1
+    path: Assets/Scene/XNOR 1 New.unity
+    guid: d1450ee094cb38248b04e53cb15d8b35
+  - enabled: 1
+    path: Assets/Scene/XNOR 2 New.unity
+    guid: cb38a7e0e03a0f049807e8f20580a904
+  - enabled: 1
+    path: Assets/Scene/XNOR 3 New.unity
+    guid: c93a29cad3b8d9e49982d5f75e0aa1d0
   m_configObjects: {}

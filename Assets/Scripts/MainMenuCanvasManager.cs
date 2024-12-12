@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -247,3 +248,8 @@ public class MainMenuCanvasManager : MonoBehaviour
         PlayerPrefs.SetInt("StageCompleted", stageID);
     }
 }
+=======
+using UnityEngine;
+
+public class MainMenuCanvasManager : MonoBehaviour { }
+>>>>>>> RevisiBranchBeforeMerge
