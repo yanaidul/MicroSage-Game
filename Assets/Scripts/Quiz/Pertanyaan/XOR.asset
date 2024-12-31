@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15a98a1ff426fa46ad89e729255c3c5, type: 3}
+  m_Name: XOR
+  m_EditorClassIdentifier: 
+  category: XOR
+  questions:
+  - questionText: Apakah fungsi utama dari gerbang logika XOR?
+    replies:
+    - Menghasilkan output 1 jika kedua input sama
+    - Menghasilkan output 0 jika kedua input berbeda
+    - Menghasilkan output 1 jika kedua input berbeda
+    - Menghasilkan output 0 jika salah satu input 1
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Berapa jumlah minimum input yang diperlukan oleh gerbang XOR?
+    replies:
+    - 1
+    - 4
+    - 2
+    - 3
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Jika input A = 0 dan B = 1, berapakah output gerbang XOR?
+    replies:
+    - 0
+    - 1
+    - Tidak dapat ditentukan
+    - Tergantung kondisi lain
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: IC TTL standar yang mengimplementasikan gerbang XOR adalah
+    replies:
+    - 7400
+    - 7486
+    - 74266
+    - 7432
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Gerbang XOR juga dikenal sebagai
+    replies:
+    - Gerbang AND terbalik
+    - 'Gerbang OR terbalik '
+    - Gerbang OR eksklusif
+    - Gerbang AND eksklusif
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Tabel kebenaran gerbang XOR menunjukkan output 1 untuk kondisi
+    replies:
+    - Semua kombinasi input
+    - Input berbeda
+    - Input sama
+    - Salah satu input 0
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Dalam rangkaian digital, gerbang XOR digunakan untuk
+    replies:
+    - Deteksi kesamaan antara dua bit
+    - Deteksi perbedaan antara dua bit
+    - Menginversi sinyal
+    - Menjumlahkan bit tanpa membawa
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Jika input A dan B keduanya 1, output gerbang XOR adalah
+    replies:
+    - 0
+    - 1
+    - Tidak dapat ditentukan
+    - Tergantung kondisi lain
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  - questionText: Simbol gerbang XOR dalam diagram logika biasanya ditampilkan dengan
+    replies:
+    - Simbol OR dengan lingkaran
+    - Simbol OR dengan garis lengkung tambahan
+    - Simbol AND dengan lingkaran
+    - Simbol AND dengan garis lengkung tambahan
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Gerbang XOR dapat dibentuk dengan menggabungkan gerbang
+    replies:
+    - AND, OR, dan NOT
+    - OR dan NOT
+    - AND dan OR
+    - NAND dan NOR
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  targetScene: 0
+  score: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
     - Mengubah sinyal menjadi bentuk inversi
     - Menjumlahkan nilai logika
     correctReplyIndex: 1
-    QuestionImage: {fileID: 0}
+    QuestionImage: {fileID: 21300000, guid: de714d3761cf1844ea6d9a1b924f187e, type: 3}
   - questionText: 'Gerbang AND pada IC digunakan untuk memastikan keluaran aktif
       hanya jika:'
     replies:
@@ -56,4 +56,48 @@ MonoBehaviour:
     - Salah satu masukan tinggi
     correctReplyIndex: 1
     QuestionImage: {fileID: 0}
-  targetScene: AND 1
+  - questionText: Jika input A = 0 dan input B = 1 pada gerbang AND 2 input, berapakah
+      nilai outputnya?
+    replies:
+    - 0
+    - 1
+    - Tidak dapat ditentukan
+    - Tergantung kondisi lainnya
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: 3bc6127c103f3b74f922196eff5c3ae9, type: 3}
+  - questionText: Pada IC gerbang AND 2 input, jika salah satu input selalu 0, apakah
+      fungsi outputnya?
+    replies:
+    - Selalu 1
+    - Selalu 0
+    - Sama dengan input lainnya
+    - Kebalikan dari input lainnya
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: 37fabe81202251347b5ce48a8e456121, type: 3}
+  - questionText: Apa fungsi utama dari gerbang logika AND dengan 2 input?
+    replies:
+    - Menghasilkan output tinggi jika salah satu input tinggi
+    - 'Menghasilkan output rendah jika kedua input rendah '
+    - Menghasilkan output tinggi hanya jika kedua input tinggi
+    - Menghasilkan output rendah hanya jika salah satu input rendah
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: 2fd5344e2ea5c8743b732d4019ad4a78, type: 3}
+  - questionText: IC gerbang logika AND dengan 2 input biasanya memiliki berapa pin?
+    replies:
+    - 2
+    - 3
+    - 4
+    - 5
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: d165afe3b8efac547b767904bcf116fc, type: 3}
+  - questionText: Manakah dari berikut ini yang merupakan representasi simbolis dari
+      gerbang AND?
+    replies:
+    - Sebuah segitiga dengan satu output
+    - Sebuah setengah lingkaran dengan dua input dan satu output
+    - Sebuah persegi dengan dua input dan satu output
+    - Sebuah lingkaran dengan satu input dan satu output
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: 4df077bea1c8efe41b2051a8ae53002c, type: 3}
+  targetScene: 0
+  score: 80

@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    [SerializeField] private GameEventNoParam _onPlaySwitchSFX;
+    [SerializeField]
+    private GameEventNoParam _onPlaySwitchSFX;
 
-    [SerializeField] private Tile _referencedTile1;
-    [SerializeField] private Tile _referencedTile2;
-    [SerializeField] private Led _led;
-    [SerializeField] private Field _field;
-    [SerializeField] private GameObject _onSwitch;
-    [SerializeField] private GameObject _offSwitch;
+    [SerializeField]
+    private Tile _referencedTile1;
+
+    [SerializeField]
+    private Tile _referencedTile2;
+
+    [SerializeField]
+    private Led _led;
+
+    [SerializeField]
+    private Field _field;
+
+    [SerializeField]
+    private GameObject _onSwitch;
+
+    [SerializeField]
+    private GameObject _offSwitch;
 
     private bool _isClicked = false;
     public bool IsClicked => _isClicked;

@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    [SerializeField] private int _stageSolvedTarget;
-    [SerializeField] private Led _led;
+    [SerializeField]
+    private int _stageSolvedTarget;
+
+    [SerializeField]
+    private Led _led;
 
     private Tile[,] _grid;
     private bool _canDrawConnection = false;
@@ -23,18 +26,18 @@ public class Field : MonoBehaviour
     {
         _dimensionX = transform.childCount;
         _dimensionY = transform.GetChild(0).transform.childCount;
-        _grid = new Tile[_dimensionX, _dimensionY+1];
+        _grid = new Tile[_dimensionX, _dimensionY + 1];
         for (int y = 0; y < _dimensionX; y++)
         {
             var row = transform.GetChild(y).transform;
             row.gameObject.name = "" + y;
             for (int x = 0; x < _dimensionY; x++)
             {
-            var tile = row.GetChild(x).GetComponent<Tile>();
-            tile.gameObject.name = "" + x;
-            tile.onSelected.AddListener(OnTileSelected);
-            CollectAmountToSolveFromTile(tile);
-            _grid[x, y] = tile;
+                var tile = row.GetChild(x).GetComponent<Tile>();
+                tile.gameObject.name = "" + x;
+                tile.onSelected.AddListener(OnTileSelected);
+                CollectAmountToSolveFromTile(tile);
+                _grid[x, y] = tile;
             }
         }
         SetGameStatus(_solved, _amountToSolve.Count);
@@ -46,8 +49,9 @@ public class Field : MonoBehaviour
         if (tile.cid > Tile.UNPLAYABLE_INDEX)
         {
             if (_amountToSolve.ContainsKey(tile.cid))
-            _amountToSolve[tile.cid] += 1;
-            else _amountToSolve[tile.cid] = 1;
+                _amountToSolve[tile.cid] += 1;
+            else
+                _amountToSolve[tile.cid] = 1;
         }
     }
 
@@ -61,9 +65,10 @@ public class Field : MonoBehaviour
             var row = transform.GetChild(y).transform;
             for (int x = 0; x < row.childCount; x++)
             {
-            var tile = _grid[x, y];
-            if (x > 0) results += ",";
-            results += tile.cid;
+                var tile = _grid[x, y];
+                if (x > 0)
+                    results += ",";
+                results += tile.cid;
             }
             results += "}\n";
         }
@@ -71,7 +76,8 @@ public class Field : MonoBehaviour
     }
 
     Vector3 _mouseWorldPosition;
-    int _mouseGridX, _mouseGridY;
+    int _mouseGridX,
+        _mouseGridY;
 
     void Update()
     {
@@ -81,19 +87,38 @@ public class Field : MonoBehaviour
             _mouseGridX = (int)Mathf.Floor(_mouseWorldPosition.x);
             _mouseGridY = (int)Mathf.Floor(_mouseWorldPosition.y);
 
-            if (CheckMouseOutsideGrid()) return;
+            if (CheckMouseOutsideGrid())
+                return;
 
             Tile hoverTile = _grid[_mouseGridX, _mouseGridY];
             Tile firstTile = _latestConnections[0];
-            if (_mouseGridX >= 10 || _mouseGridY >= 12) return;
+            if (_mouseGridX >= 10 || _mouseGridY >= 12)
+                return;
             bool isDifferentActiveTile = hoverTile.cid > 0 && hoverTile.cid != firstTile.cid;
 
-            if (hoverTile.isHighlighted || hoverTile.isSolved || (isDifferentActiveTile && !hoverTile.IsFromGenerator) || hoverTile.IsNotGrid) return;
+            if (
+                hoverTile.isHighlighted
+                || hoverTile.isSolved
+                || (isDifferentActiveTile && !hoverTile.IsFromGenerator)
+                || hoverTile.IsNotGrid
+            )
+                return;
 
             Vector2 connectionTilePosition = FindTileCoordinates(_connectionTile);
-            bool isPositionDifferent = IsDifferentPosition(_mouseGridX, _mouseGridY, connectionTilePosition);
+            bool isPositionDifferent = IsDifferentPosition(
+                _mouseGridX,
+                _mouseGridY,
+                connectionTilePosition
+            );
 
-            Debug.Log("Field -> OnMouseDrag(" + isPositionDifferent + "): " + _mouseGridX + "|" + _mouseGridY);
+            Debug.Log(
+                "Field -> OnMouseDrag("
+                    + isPositionDifferent
+                    + "): "
+                    + _mouseGridX
+                    + "|"
+                    + _mouseGridY
+            );
 
             if (isPositionDifferent)
             {
@@ -101,8 +126,14 @@ public class Field : MonoBehaviour
                 var deltaY = System.Math.Abs(connectionTilePosition.y - _mouseGridY);
                 bool isShiftNotOnNext = deltaX > 1 || deltaY > 1;
                 bool isShiftDiagonal = (deltaX > 0 && deltaY > 0);
-                Debug.Log("Field -> OnMouseDrag: isShiftNotOnNext = " + isShiftNotOnNext + "| isShiftDiagonal = " + isShiftDiagonal);
-                if (isShiftNotOnNext || isShiftDiagonal) return;
+                Debug.Log(
+                    "Field -> OnMouseDrag: isShiftNotOnNext = "
+                        + isShiftNotOnNext
+                        + "| isShiftDiagonal = "
+                        + isShiftDiagonal
+                );
+                if (isShiftNotOnNext || isShiftDiagonal)
+                    return;
 
                 hoverTile.Highlight();
                 hoverTile.SetConnectionColor(_connectionTile.ConnectionColor);
@@ -116,7 +147,7 @@ public class Field : MonoBehaviour
                 _connectionTile = hoverTile;
                 _latestConnections.Add(_connectionTile);
 
-                if (CheckIfTilesMatch(hoverTile, firstTile) )
+                if (CheckIfTilesMatch(hoverTile, firstTile))
                 {
                     _latestConnections.ForEach((tile) => tile.isSolved = true);
                     _canDrawConnection = false;
@@ -138,7 +169,10 @@ public class Field : MonoBehaviour
 
     bool CheckMouseOutsideGrid()
     {
-        return _mouseGridY >= _dimensionY+1 || _mouseGridY < 0 || _mouseGridX >= _dimensionX || _mouseGridX < 0;
+        return _mouseGridY >= _dimensionY + 1
+            || _mouseGridY < 0
+            || _mouseGridX >= _dimensionX
+            || _mouseGridX < 0;
     }
 
     void OnTileSelected(Tile tile)
@@ -146,7 +180,6 @@ public class Field : MonoBehaviour
         Debug.Log("Field -> onTileSelected(" + tile.isSelected + "): " + FindTileCoordinates(tile));
         if (tile.isSelected)
         {
-
             _connectionTile = tile;
             _latestConnections = new List<Tile>();
             _latestConnections.Add(_connectionTile);
@@ -156,7 +189,8 @@ public class Field : MonoBehaviour
         else
         {
             bool isFirstTileInConnection = _connectionTile == tile;
-            if (isFirstTileInConnection) tile.HightlightReset();
+            if (isFirstTileInConnection)
+                tile.HightlightReset();
             else if (!CheckIfTilesMatch(_connectionTile, tile))
             {
                 ResetConnections();
@@ -188,15 +222,15 @@ public class Field : MonoBehaviour
     public void OnUndo()
     {
         Debug.Log("Field -> onUndo");
-        foreach(Tile connection in _latestConnections)
+        foreach (Tile connection in _latestConnections)
         {
             connection.ResetConnection();
             connection.HightlightReset();
         }
-        if(_solved > 0) _solved--;
+        if (_solved > 0)
+            _solved--;
         _led.OnTurnOffLED();
         SetGameStatus(_solved, _amountToSolve.Count);
-
     }
 
     void SetGameStatus(int solved, int from)
@@ -207,17 +241,21 @@ public class Field : MonoBehaviour
     void ResetConnections()
     {
         Debug.Log("Field -> _ResetConnections: _connections.Count = " + _latestConnections.Count);
-        _latestConnections.ForEach((tile) =>
-        {
-            tile.ResetConnection();
-            tile.HightlightReset();
-        });
+        _latestConnections.ForEach(
+            (tile) =>
+            {
+                tile.ResetConnection();
+                tile.HightlightReset();
+            }
+        );
     }
 
     public bool CheckCurrentSolvedStatus()
     {
-        if (_solved == _stageSolvedTarget) return true;
-        else return false;
+        if (_solved == _stageSolvedTarget)
+            return true;
+        else
+            return false;
     }
 
     Vector2 FindTileCoordinates(Tile tile)
@@ -237,6 +275,7 @@ public class Field : MonoBehaviour
     {
         public Tile tile;
         public Vector2 position;
+
         public Connection(Tile tile, Vector2 position)
         {
             this.tile = tile;

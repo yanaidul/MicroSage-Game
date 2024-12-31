@@ -55,4 +55,46 @@ MonoBehaviour:
     - Tergantung Nilai B
     correctReplyIndex: 0
     QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
-  targetScene: NOR 1
+  - questionText: Apa fungsi utama dari gerbang NOR?
+    replies:
+    - 'Menghasilkan keluaran 1 jika semua masukan 1 '
+    - Menghasilkan keluaran 0 jika semua masukan 1
+    - Menghasilkan keluaran 1 jika semua masukan 0
+    - Menghasilkan keluaran 0 jika semua masukan 0
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
+  - questionText: Jika masukan A = 0 dan B = 1 pada gerbang NOR, berapakah keluarannya?
+    replies:
+    - 1
+    - 0
+    - 2
+    - Tidak dapat ditentukan
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
+  - questionText: 'Persamaan Boolean untuk gerbang NOR dengan dua masukan adalah:'
+    replies:
+    - Y = (A + B)'
+    - "Y = A \xB7 B"
+    - "Y = (A \xB7 B)'"
+    - Y = A + B
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
+  - questionText: Tabel kebenaran gerbang NOR dengan dua masukan menunjukkan keluaran
+      1 jika
+    replies:
+    - Kedua masukan 0
+    - Salah satu masukan 1
+    - Kedua masukan 1
+    - Semua benar
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
+  - questionText: IC TTL yang mengandung gerbang NOR adalah
+    replies:
+    - 7400
+    - 7402
+    - 7432
+    - 7486
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: 529c0528f83b4554d9558088582667e5, type: 3}
+  targetScene: 0
+  score: 0

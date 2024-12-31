@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 158780387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3012b1fb841f49545a6a5718b5cef151, type: 3}
+  m_Script: {fileID: 11500000, guid: 766bf878d2d4a044cacbfec41213c76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _amountOfSwitchToOn: 2
@@ -13521,12 +13521,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aeba5dd3dedadaa4185d44046272f86a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fb8934ac287f6244ae5148e03712f94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 41.72, y: 42.806892}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -18949,6 +18949,14 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 143359445}
+    - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
+      propertyPath: _typeIC
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
+      propertyPath: bintangData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f140598f3ea4a443ad7abdb893548dd, type: 2}
     - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
       propertyPath: _onTurnOnLED
       value: 

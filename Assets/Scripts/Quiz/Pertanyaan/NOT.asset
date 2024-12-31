@@ -55,4 +55,46 @@ MonoBehaviour:
     - Tidak terdefinisi
     correctReplyIndex: 1
     QuestionImage: {fileID: 0}
-  targetScene: NOT 1
+  - questionText: 'Simbol gerbang NOT dalam diagram logika biasanya ditampilkan dengan:'
+    replies:
+    - Segitiga dengan lingkaran di ujung
+    - Setengah lingkaran dengan titik
+    - Persegi panjang dengan dua input
+    - Lingkaran dengan tanda plus
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  - questionText: Dalam rangkaian digital, gerbang NOT digunakan untuk
+    replies:
+    - Menggabungkan dua sinyal
+    - Membandingkan dua sinyal
+    - Membalikkan level logika sinyal
+    - Menyimpan data
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Jika input A = 1, output gerbang NOT adalah
+    replies:
+    - 0
+    - 1
+    - Tidak dapat ditentukan
+    - Tergantung kondisi lain
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  - questionText: Gerbang NOT sering digunakan dalam rangkaian logika untuk
+    replies:
+    - Menggabungkan sinyal
+    - Menyimpan data
+    - Menginversi sinyal
+    - Menguatkan sinyal
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: 'Dalam tabel kebenaran gerbang NOT, jika input adalah 1, maka outputnya
+      adalah:'
+    replies:
+    - 0
+    - 1
+    - Tidak dapat ditentukan
+    - Tidak terdefinisi
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  targetScene: 0
+  score: 0

@@ -1537,6 +1537,8 @@ MonoBehaviour:
   _onLed: {fileID: 169806428}
   _offLed: {fileID: 1450968279}
   _onWin: {fileID: 11400000, guid: d18c1fbc9f6578b4baed1c337ac536d7, type: 2}
+  _switch1: {fileID: 335168695}
+  _switch2: {fileID: 753707810}
 --- !u!1 &166773954
 GameObject:
   m_ObjectHideFlags: 0
@@ -7471,7 +7473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &840128819
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12870,7 +12872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1608271526
 RectTransform:
   m_ObjectHideFlags: 0

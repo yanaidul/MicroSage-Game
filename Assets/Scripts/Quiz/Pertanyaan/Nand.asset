@@ -55,4 +55,46 @@ MonoBehaviour:
     - NAND
     correctReplyIndex: 0
     QuestionImage: {fileID: 21300000, guid: f18a437fbe087264f8724b03dd4b7210, type: 3}
-  targetScene: NAND 1
+  - questionText: Gerbang logika manakah yang menghasilkan output tinggi (1) hanya
+      jika kedua inputnya tinggi (1)?
+    replies:
+    - AND
+    - OR
+    - NOT
+    - NAND
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: f18a437fbe087264f8724b03dd4b7210, type: 3}
+  - questionText: Apa fungsi utama dari gerbang NAND?
+    replies:
+    - Menghasilkan keluaran 1 jika semua masukan 1
+    - Menghasilkan keluaran 0 jika semua masukan 1
+    - Menghasilkan keluaran 1 jika semua masukan 0
+    - Menghasilkan keluaran 0 jika semua masukan 0
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: f18a437fbe087264f8724b03dd4b7210, type: 3}
+  - questionText: Jika masukan A = 1 dan B = 1 pada gerbang NAND, berapakah keluarannya?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak dapat ditentukan
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: f18a437fbe087264f8724b03dd4b7210, type: 3}
+  - questionText: Persamaan Boolean untuk gerbang NAND dengan dua masukan adalah
+    replies:
+    - "Y = (A \xB7 B)'"
+    - Y = A + B
+    - Y = (A + B)'
+    - "Y = A \xB7 B"
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: f18a437fbe087264f8724b03dd4b7210, type: 3}
+  - questionText: 'Jika A = 0 dan B = 1, keluaran gerbang NAND adalah:'
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak dapat ditentukan
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 21300000, guid: f18a437fbe087264f8724b03dd4b7210, type: 3}
+  targetScene: 0
+  score: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -27,32 +28,39 @@ public class QuizManager : MonoBehaviour
 
     [SerializeField]
     public int wrongReplyScore = 5;
-    public TextMeshProUGUI scoreText;
+
+    [Header("Game Finished Manager")]
+    public GameObject gameFinishedPanel;
+    public TextMeshProUGUI BenarSalahText;
+    public TextMeshProUGUI totalScoreText;
+
+    [Header("LoadGameManager")]
+    public GameObject PeringatanPanel;
+    public TextMeshProUGUI PeringatanText;
 
     [Header("correctReplyIndex")]
     public int correctReplyIndex;
     int correctReplies;
+    int wrongReplies;
 
-    [Header("Game Finished Panel")]
-    public GameObject gameFinishedPanel;
+    [Header("Index Benar / salah")]
+    public TextMeshProUGUI correctRepliesText;
+    public TextMeshProUGUI wrongRepliesText;
 
-    [Header("Time Countdown")]
-    public TextMeshProUGUI countdownText;
-
-    [SerializeField]
-    public float countdownDuration = 3f;
-
-    void Start()
+    public void Start()
     {
+        PeringatanPanel.SetActive(false);
         int selectedCategoryIndex = PlayerPrefs.GetInt("SelectedCategory", 0);
         gameFinishedPanel.SetActive(false);
         SelectCategory(selectedCategoryIndex);
+        LoadProgress(selectedCategory.category);
     }
 
     public void SelectCategory(int categoryIndex)
     {
         selectedCategory = categories[categoryIndex];
         currentQuestionIndex = 0;
+        scoreManager.selectedCategoryData = selectedCategory;
         DisplayQuestion();
     }
 
@@ -63,56 +71,102 @@ public class QuizManager : MonoBehaviour
             Debug.LogError("No category selected");
             return;
         }
-        ResetButtonColors();
+
+        if (selectedCategory.score >= 100)
+        {
+            ResetCategoryScore();
+        }
+        else
+        {
+            if (currentQuestionIndex >= selectedCategory.questions.Length)
+            {
+                ShowGameFinishedPanel();
+                return;
+            }
+        }
+
+        ResetButtonColors(); // Reset warna tombol jika diperlukan
+
         var question = selectedCategory.questions[currentQuestionIndex];
         questionText.text = question.questionText;
-        questionImage.sprite = question.QuestionImage;
 
-        // Validasi jumlah tombol
-        if (replyButtons.Length < question.replies.Length)
+        if (question.QuestionImage != null)
         {
-            Debug.LogError("Not enough buttons for replies");
-            return;
+            questionImage.sprite = question.QuestionImage;
         }
 
         for (int i = 0; i < replyButtons.Length; i++)
         {
             if (i < question.replies.Length)
             {
-                replyButtons[i].gameObject.SetActive(true);
-                TextMeshProUGUI buttonText = replyButtons[i]
-                    .GetComponentInChildren<TextMeshProUGUI>();
-                buttonText.text = question.replies[i];
-
-                int replyIndex = i;
-                replyButtons[i].onClick.RemoveAllListeners();
-                replyButtons[i].onClick.AddListener(() => OnReplySelected(replyIndex));
+                SetReplyButton(replyButtons[i], question.replies[i], i);
             }
             else
             {
-                // Sembunyikan tombol jika tidak diperlukan
                 replyButtons[i].gameObject.SetActive(false);
             }
         }
     }
 
+    private void ResetCategoryScore()
+    {
+        PeringatanPanel.SetActive(true);
+        PeringatanText.text = selectedCategory.category.ToString();
+        string categoryKey = selectedCategory.category;
+        scoreManager.ResetScore();
+        PlayerPrefs.SetInt($"CorrectReplies_{categoryKey}", 0);
+        PlayerPrefs.SetInt($"WrongReplies_{categoryKey}", 0);
+        PlayerPrefs.SetInt($"LastQuestion_Index_{categoryKey}", 0);
+        PlayerPrefs.Save();
+
+        Debug.Log("Score sudah di reset dari awal");
+    }
+
+    private void SetReplyButton(Button button, string replyText, int replyIndex)
+    {
+        button.gameObject.SetActive(true);
+        button.GetComponentInChildren<TextMeshProUGUI>().text = replyText;
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => OnReplySelected(replyIndex));
+    }
+
     public void OnReplySelected(int replyIndex)
     {
+        if (
+            selectedCategory == null
+            || selectedCategory.questions == null
+            || selectedCategory.questions.Length == 0
+        )
+        {
+            Debug.LogError("Kategori atau pertanyaan belum diatur.");
+            return;
+        }
+
         // Periksa apakah jawaban benar
         if (replyIndex == selectedCategory.questions[currentQuestionIndex].correctReplyIndex)
         {
             scoreManager.AddScore(correctReplyScore);
             correctReplies++;
+            SaveProgress();
+
             Debug.Log("Correct!");
         }
         else
         {
-            scoreManager.SubtractScore(wrongReplyScore);
+            wrongReplies++;
+            // Pastikan skor tidak dikurangi jika sudah 0
+            if (scoreManager.GetScore(selectedCategory.category) > 0)
+            {
+                scoreManager.SubtractScore(wrongReplyScore);
+            }
+            SaveProgress();
+
             Debug.Log("Incorrect!");
         }
 
         // Perbarui indeks pertanyaan
         currentQuestionIndex++;
+        SaveProgress();
 
         // Cek apakah sudah selesai atau tampilkan pertanyaan berikutnya
         if (currentQuestionIndex < selectedCategory.questions.Length)
@@ -125,49 +179,7 @@ public class QuizManager : MonoBehaviour
         {
             Debug.Log("Quiz completed!");
             ShowGameFinishedPanel();
-
-            if (!string.IsNullOrEmpty(selectedCategory.targetScene))
-            {
-                // Panggil coroutine untuk memberi jeda sebelum pindah scene
-                StartCoroutine(LoadSceneWithDelay(selectedCategory.targetScene));
-            }
-            else
-            {
-                Debug.LogWarning("Target scene tidak ditentukan untuk kategori ini.");
-            }
         }
-    }
-
-    private IEnumerator LoadSceneWithDelay(string sceneName)
-    {
-        float remainingTime = countdownDuration;
-
-        while (remainingTime > 0)
-        {
-            // Perbarui teks countdown
-            if (countdownText != null)
-            {
-                countdownText.text = $"Memuat dalam {Mathf.Ceil(remainingTime)} detik...";
-            }
-
-            // Tunggu satu frame dan kurangi waktu
-            yield return new WaitForSeconds(1f);
-            remainingTime--;
-        }
-
-        // Bersihkan teks countdown setelah selesai
-        if (countdownText != null)
-        {
-            countdownText.text = string.Empty;
-        }
-
-        // Pindah ke scene yang ditentukan
-        OnPlayScene(sceneName);
-    }
-
-    public void OnPlayScene(string index)
-    {
-        SceneManager.LoadScene(index);
     }
 
     public void ShowCorrectReply()
@@ -197,6 +209,94 @@ public class QuizManager : MonoBehaviour
     public void ShowGameFinishedPanel()
     {
         gameFinishedPanel.SetActive(true);
-        scoreText.text = "" + correctReplies + " / " + selectedCategory.questions.Length;
+
+        // Hitung skor akhir berdasarkan correctReplies dan wrongReplies yang sudah diperbarui
+        var scoreAkhir = correctReplies - wrongReplies;
+
+        // Pastikan skor akhir tidak kurang dari 0
+        scoreAkhir = Mathf.Max(scoreAkhir, 0);
+
+        // Tampilkan skor akhir dan total pertanyaan
+        BenarSalahText.text = scoreAkhir.ToString() + " / " + selectedCategory.questions.Length;
+
+        // Ambil skor dari ScoreManager
+        int totalScore = scoreManager.GetScore(selectedCategory.category);
+        totalScoreText.text = totalScore.ToString();
+    }
+
+    public void SaveProgress()
+    {
+        PlayerPrefs.SetInt("CorrectReplies_" + selectedCategory.category, correctReplies);
+        PlayerPrefs.SetInt("LastQuestion_Index_" + selectedCategory.category, currentQuestionIndex);
+        PlayerPrefs.SetInt("WrongReplies_" + selectedCategory.category, wrongReplies);
+        PlayerPrefs.Save();
+        Debug.Log("Progress saved");
+
+        // Update tampilan teks jawaban benar dan salah
+        correctRepliesText.text = correctReplies.ToString();
+        wrongRepliesText.text = wrongReplies.ToString();
+
+        // Simpan skor ke ScoreManager
+        scoreManager.SaveScore(selectedCategory.category);
+    }
+
+    public void LoadProgress(string categoryName)
+    {
+        Debug.Log($"Mencoba memuat kategori: {categoryName}");
+
+        // Temukan kategori berdasarkan nama
+        QuestionData category = Array.Find(categories, c => c.category == categoryName);
+
+        if (category != null)
+        {
+            // Set data kategori yang dipilih
+            scoreManager.selectedCategoryData = category;
+
+            // Muat skor untuk kategori
+            scoreManager.LoadScore(category.category);
+            Debug.Log($"Kategori ditemukan: {category.category}, skor dimuat.");
+
+            // Muat jumlah jawaban benar dan salah dari PlayerPrefs
+            int correct = PlayerPrefs.GetInt("CorrectReplies_" + category.category, 0);
+            int wrong = PlayerPrefs.GetInt("WrongReplies_" + category.category, 0);
+
+            // Update tampilan teks jawaban benar dan salah
+            correctRepliesText.text = correct.ToString();
+            wrongRepliesText.text = wrong.ToString();
+
+            // Ambil indeks pertanyaan terakhir dari PlayerPrefs dan lanjutkan dari sana
+            currentQuestionIndex = PlayerPrefs.GetInt("LastQuestion_Index_" + category.category, 0);
+            Debug.Log(
+                $"Indeks pertanyaan terakhir di progress PlayerPrefs: {currentQuestionIndex} dan last question {PlayerPrefs.GetInt("LastQuestion_Index_" + category.category)}"
+            );
+            BenarSalahText.text = correct.ToString() + " / " + category.questions.Length;
+            if (currentQuestionIndex == category.questions.Length)
+            {
+                PeringatanPanel.SetActive(true);
+                PeringatanText.text = category.category.ToString();
+                BenarSalahText.text =
+                    ""
+                    + scoreManager.GetScore(category.score.ToString()).ToString()
+                    + " / "
+                    + category.questions.Length;
+                //  BenarSalahText.text =
+                // "" + scoreAkhir.ToString() + " / " + selectedCategory.questions.Length;
+            }
+            else
+            {
+                DisplayQuestion();
+            }
+        }
+        else
+        {
+            Debug.LogError($"Kategori dengan nama {categoryName} tidak ditemukan.");
+            Debug.Log("Daftar kategori yang tersedia:");
+            foreach (var cat in categories)
+            {
+                Debug.Log($"Kategori: {cat.category}");
+            }
+        }
+
+        DisplayQuestion();
     }
 }

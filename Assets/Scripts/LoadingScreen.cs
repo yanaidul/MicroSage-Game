@@ -8,7 +8,7 @@ public class LoadingScreen : MonoBehaviour
 {
     // Start is called before the first frame update
     public Image loadingBarImage;
-
+    public GameObject _loadingUI;
     public float fillDuration = 5f;
 
     public float targetFill = 1f;
@@ -19,12 +19,14 @@ public class LoadingScreen : MonoBehaviour
 
     public void Start()
     {
+        // _loadingUI.SetActive(true);
         loadingBarImage.fillAmount = 0f;
         buttonSkip.SetActive(false); // Pastikan buttonSkip disembunyikan saat awal
     }
 
     public void LoadScene(int stageID)
     {
+        _loadingUI.SetActive(true);
         currentStageID = stageID; // Simpan stageID yang dimuat
         CheckSkipButton(stageID); // Periksa apakah buttonSkip harus muncul
         StartCoroutine(LoadScene_Couroutine(stageID));
@@ -77,6 +79,7 @@ public class LoadingScreen : MonoBehaviour
         loadingBarImage.fillAmount = targetFill;
 
         Debug.Log("Scene siap diaktifkan...");
+
         operation.allowSceneActivation = true; // Aktifkan scene setelah loading selesai
     }
 

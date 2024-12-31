@@ -8060,26 +8060,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9576b1334a328694ba6f2afa80487282, type: 3}
---- !u!1 &826329208
+--- !u!1 &826329208 stripped
 GameObject:
-  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 4967281206016885863, guid: d1e97e8beff41b54b9e532c23673c77c, type: 3}
   m_PrefabInstance: {fileID: 8482671562396951763}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1665415443}
-  - component: {fileID: 1665415435}
-  - component: {fileID: 1665415442}
-  - component: {fileID: 1665415438}
-  - component: {fileID: 1665415441}
-  m_Layer: 0
-  m_Name: Canvas Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &829952713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4070307996697815865, guid: 9576b1334a328694ba6f2afa80487282, type: 3}
@@ -13487,7 +13472,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1519030273
@@ -14445,9 +14430,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4070307996697815865, guid: 9576b1334a328694ba6f2afa80487282, type: 3}
   m_PrefabInstance: {fileID: 72320003}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1665415435
+--- !u!114 &1665415435 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 8220281252224238439, guid: d1e97e8beff41b54b9e532c23673c77c, type: 3}
   m_PrefabInstance: {fileID: 8482671562396951763}
   m_PrefabAsset: {fileID: 0}
@@ -14457,15 +14441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c958961d7b5929419b75d87f119fb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingUI: {fileID: 840128818}
-  _gameUI: {fileID: 1608271525}
-  _winPopUp: {fileID: 1346725460}
-  _losePopUp: {fileID: 1286431022}
-  _settingPopUp: {fileID: 1690158486}
-  _onPause: {fileID: 11400000, guid: f15d2bcc59e837a4ab9a1f6a948488c7, type: 2}
-  _onResume: {fileID: 11400000, guid: 577a2a0fe3835ba41b82b90fe2a89fbc, type: 2}
-  _stagePlayerPrefs: XnorStage
-  _stageID: 3
 --- !u!114 &1665415438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14522,49 +14497,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1665415442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4578300926861527388, guid: d1e97e8beff41b54b9e532c23673c77c, type: 3}
-  m_PrefabInstance: {fileID: 8482671562396951763}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826329208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a77113e3f4f4f34592f96df232c7cc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEventNoParam: {fileID: 11400000, guid: d18c1fbc9f6578b4baed1c337ac536d7, type: 2}
-  _responsesNoParam:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1665415435}
-        m_TargetAssemblyTypeName: CanvasManager, Assembly-CSharp
-        m_MethodName: OnWin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!4 &1665415443
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6454730888140481686, guid: d1e97e8beff41b54b9e532c23673c77c, type: 3}
-  m_PrefabInstance: {fileID: 8482671562396951763}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826329208}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676910309
 GameObject:
   m_ObjectHideFlags: 0
@@ -18965,6 +18897,14 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 143359445}
+    - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
+      propertyPath: _typeIC
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
+      propertyPath: bintangData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f140598f3ea4a443ad7abdb893548dd, type: 2}
     - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
       propertyPath: _onTurnOnLED
       value: 

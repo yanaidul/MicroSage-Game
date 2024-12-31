@@ -1,19 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _loadingUI;
-    [SerializeField] private GameObject _gameUI;
-    [SerializeField] private GameObject _winPopUp;
-    [SerializeField] private GameObject _losePopUp;
-    [SerializeField] private GameObject _settingPopUp;
-    [SerializeField] private GameEventNoParam _onPause;
-    [SerializeField] private GameEventNoParam _onResume;
+    public GameObject _loadingUI;
 
-    [SerializeField] private string _stagePlayerPrefs;
-    [SerializeField] private int _stageID;
+    [SerializeField]
+    private GameObject _gameUI;
+
+    [SerializeField]
+    private GameObject _winPopUp;
+
+    [SerializeField]
+    private GameObject _losePopUp;
+
+    [SerializeField]
+    private GameObject _settingPopUp;
+
+    [SerializeField]
+    private GameEventNoParam _onPause;
+
+    [SerializeField]
+    private GameEventNoParam _onResume;
+
+    [SerializeField]
+    private string _stagePlayerPrefs;
+
+    [SerializeField]
+    private int _stageID;
+
+    [SerializeField]
+    private TutorialManager _tutorialManager;
+
+    [Header("Animasi Manager")]
+    [SerializeField]
+    private AnimasiManager _animasiManager;
+
     void Start()
     {
         //OnLoading();
@@ -22,16 +48,30 @@ public class CanvasManager : MonoBehaviour
 
     public void OnLoading()
     {
-        _onResume.Raise();
         _loadingUI.SetActive(true);
+        _onResume.Raise();
+
         _gameUI.SetActive(false);
         _winPopUp.SetActive(false);
         _settingPopUp.SetActive(false);
         _losePopUp.SetActive(false);
     }
 
-    public void OnGameplay()
+    // public async void OnMasukGame()
+    // {
+    //     _onResume.Raise();
+    //     _gameUI.SetActive(true);
+    //     _loadingUI.SetActive(false);
+    //     _winPopUp.SetActive(false);
+    //     _settingPopUp.SetActive(false);
+    //     _losePopUp.SetActive(false);
+    // }
+
+    public async void OnGameplay()
     {
+        // _tutorialManager.OnEnable();
+        await _animasiManager.PausePanelOutro();
+
         _onResume.Raise();
         _gameUI.SetActive(true);
         _loadingUI.SetActive(false);
@@ -42,7 +82,9 @@ public class CanvasManager : MonoBehaviour
 
     public void OnWin()
     {
-        if(PlayerPrefs.GetInt(_stagePlayerPrefs) < _stageID) PlayerPrefs.SetInt(_stagePlayerPrefs, _stageID);
+        _animasiManager.WinPanelIntro();
+        if (PlayerPrefs.GetInt(_stagePlayerPrefs) < _stageID)
+            PlayerPrefs.SetInt(_stagePlayerPrefs, _stageID);
 
         _winPopUp.SetActive(true);
         _settingPopUp.SetActive(false);
@@ -51,6 +93,7 @@ public class CanvasManager : MonoBehaviour
 
     public void OnLose()
     {
+        _animasiManager.LosePanelIntro();
         _losePopUp.SetActive(true);
         _winPopUp.SetActive(false);
         _settingPopUp.SetActive(false);
@@ -58,10 +101,15 @@ public class CanvasManager : MonoBehaviour
 
     public void OnSetting()
     {
+        _animasiManager.PausePanelIntro();
         _onPause.Raise();
         _settingPopUp.SetActive(true);
         _losePopUp.SetActive(false);
         _winPopUp.SetActive(false);
     }
 
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
 }

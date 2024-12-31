@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15a98a1ff426fa46ad89e729255c3c5, type: 3}
+  m_Name: XNOR
+  m_EditorClassIdentifier: 
+  category: XNOR
+  questions:
+  - questionText: Apakah fungsi utama dari gerbang logika XNOR?
+    replies:
+    - Menghasilkan output 1 jika kedua input berbeda
+    - Menghasilkan output 0 jika kedua input sama
+    - Menghasilkan output 1 jika kedua input sama
+    - Menghasilkan output 0 jika salah satu input 1
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Berapa jumlah minimum input yang diperlukan oleh gerbang XNOR?
+    replies:
+    - 1
+    - 2
+    - 3
+    - 4
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Jika input A = 0 dan B = 1, berapakah output gerbang XNOR?
+    replies:
+    - 0
+    - 1
+    - Tidak dapat ditentukan
+    - Tergantung kondisi lain
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  - questionText: 'IC TTL standar yang mengimplementasikan gerbang XNOR adalah:'
+    replies:
+    - 7400
+    - 7486
+    - 74266
+    - 7432
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Gerbang XNOR juga dikenal sebagai
+    replies:
+    - Gerbang AND terbalik
+    - Gerbang OR terbalik
+    - Gerbang XOR terbalik
+    - Gerbang NAND terbalik
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: 'Tabel kebenaran gerbang XNOR menunjukkan output 1 untuk kondisi:'
+    replies:
+    - Semua kombinasi input
+    - Input berbeda
+    - Input sama
+    - Salah satu input 1
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 0}
+  - questionText: Dalam rangkaian digital, gerbang XNOR digunakan untuk
+    replies:
+    - Deteksi kesamaan antara dua bit
+    - Deteksi perbedaan antara dua bit
+    - Menginversi sinyal
+    - Menjumlahkan bit
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  - questionText: Jika input A dan B keduanya 1, output gerbang XNOR adalah
+    replies:
+    - 0
+    - 1
+    - Tidak dapat ditentukan
+    - Tergantung kondisi lain
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: 'Simbol gerbang XNOR dalam diagram logika biasanya ditampilkan
+      dengan:'
+    replies:
+    - Simbol OR dengan lingkaran
+    - Simbol XOR dengan lingkaran
+    - Simbol AND dengan lingkaran
+    - Simbol NOR dengan lingkaran
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Gerbang XNOR dapat dibentuk dengan menggabungkan gerbang
+    replies:
+    - XOR dan NOT
+    - AND dan OR
+    - NAND dan NOR
+    - OR dan NOT
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 0}
+  targetScene: 0
+  score: 0

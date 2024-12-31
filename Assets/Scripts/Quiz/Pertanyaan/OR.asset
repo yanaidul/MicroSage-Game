@@ -58,4 +58,45 @@ MonoBehaviour:
     - Output akan selalu 1
     correctReplyIndex: 3
     QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
-  targetScene: OR 1
+  - questionText: Sebuah IC 7432 memiliki berapa gerbang OR di dalamnya?
+    replies:
+    - 2
+    - 3
+    - 4
+    - 6
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
+  - questionText: Dalam diagram rangkaian, simbol gerbang OR adalah
+    replies:
+    - Panah dengan tanda titik
+    - Bentuk segitiga dengan tanda tambah (+)
+    - Setengah lingkaran dengan ujung terbuka
+    - Kotak persegi panjang
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
+  - questionText: IC gerbang logika OR standar adalah
+    replies:
+    - 7404
+    - 7408
+    - 7432
+    - 7486
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
+  - questionText: IC TTL yang mengandung gerbang OR adalah
+    replies:
+    - 7400
+    - 7402
+    - 7432
+    - 7486
+    correctReplyIndex: 2
+    QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
+  - questionText: Simbol gerbang OR dalam diagram logika adalah
+    replies:
+    - Setengah lingkaran dengan ujung runcing
+    - Lingkaran dengan tanda plus
+    - Segitiga dengan titik di ujung
+    - Persegi panjang dengan tanda titik
+    correctReplyIndex: 0
+    QuestionImage: {fileID: 21300000, guid: 5808a4220463c764183907cb5f3f656e, type: 3}
+  targetScene: 0
+  score: 0
