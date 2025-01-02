@@ -43,11 +43,6 @@ public class TutorialManager : MonoBehaviour
     public int sceneIndex;
     private string filePath;
 
-    public void Awake()
-    {
-        PernahTutorial();
-    }
-
     public void Start()
     {
         currentPageIndex = 0; // Mulai dari halaman pertama
@@ -166,7 +161,6 @@ public class TutorialManager : MonoBehaviour
         if (currentPageIndex == tutorialPages.Length - 1)
         {
             endTutorial.SetActive(true);
-            PernahTutorial();
         }
 
         // Atur tombol navigasi
@@ -240,6 +234,12 @@ public class TutorialManager : MonoBehaviour
     //         MoveUI(positions[currentPageIndex]);
     //     }
     // }
+    public void sudahsiapTutorial(int index)
+    {
+        loadingScreen.Start();
+        loadingScreen.LoadScene(index);
+        PernahTutorial();
+    }
 
     private void SetObjectsForPageIndex(int index)
     {

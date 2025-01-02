@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class LoadingScreen : MonoBehaviour
     public float fillDuration = 5f;
 
     public float targetFill = 1f;
-
+    private string filePath;
     public float delay = 3f;
     public GameObject buttonSkip; // Tambahkan referensi ke buttonSkip di Inspector
     private int currentStageID;
@@ -22,6 +23,41 @@ public class LoadingScreen : MonoBehaviour
         // _loadingUI.SetActive(true);
         loadingBarImage.fillAmount = 0f;
         buttonSkip.SetActive(false); // Pastikan buttonSkip disembunyikan saat awal
+    }
+
+    public void ResetTutorial()
+    {
+        filePath = Path.Combine(Application.persistentDataPath, "visited.txt");
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath); // Menghapus file "visited.txt"
+            Debug.Log("File 'visited.txt' berhasil dihapus. Status aplikasi direset.");
+            LoadScene(4); // Load scene tutorial
+        }
+        else
+        {
+            Debug.Log("File 'visited.txt' tidak ditemukan. Tidak ada yang perlu dihapus.");
+            LoadScene(1);
+        }
+    }
+
+    public void Awalan()
+    {
+        _loadingUI.SetActive(true);
+        filePath = Path.Combine(Application.persistentDataPath, "visited.txt");
+
+        if (File.Exists(filePath))
+        {
+            Debug.Log("Tutorial sudah pernah dibuka.");
+            // Lakukan sesuatu untuk pengguna lama
+            LoadScene(1);
+        }
+        else
+        {
+            Debug.Log("Tutorial belum pernah dibuka.");
+            LoadScene(4);
+        }
     }
 
     public void LoadScene(int stageID)

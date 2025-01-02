@@ -57,6 +57,7 @@ public class TutorialMainManager : MonoBehaviour
         {
             tileTujuan.SetActive(false);
         }
+        tutupBawah.SetActive(false);
     }
 
     public void EnableTile()
@@ -365,6 +366,11 @@ public class TutorialMainManager : MonoBehaviour
         {
             Debug.LogWarning("Sudah di tutorial pertama, tidak bisa mundur lagi.");
         }
+    }
+
+    public void Matikansemua()
+    {
+        tutupBawah.SetActive(false);
     }
 
     public void NextButtonClicked()

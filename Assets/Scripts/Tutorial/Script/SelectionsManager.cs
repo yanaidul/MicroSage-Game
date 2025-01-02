@@ -24,6 +24,7 @@ public class SelectionsManager : MonoBehaviour
     public TextMeshProUGUI _headerSimulasi;
     public GameObject[] _stageSelectionUI;
     public GameObject _simulasiContainer;
+    public GameObject _helpTrigger;
 
     [Header("Quiz Management")]
     public int quizIndex = 0;
@@ -100,6 +101,16 @@ public class SelectionsManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void OnOpenHelpTrigger()
+    {
+        _helpTrigger.SetActive(true);
+        _leaderboardSimulasi.SetActive(false);
+        _loadingScreen.SetActive(false);
+        _stageSelections.SetActive(false);
+        _simulasiSelections.SetActive(false);
+        _stageSelections.SetActive(true);
+    }
+
     public void OnOpenICAND()
     {
         _headerSimulasi.text = "IC AND";
@@ -107,6 +118,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _helpTrigger.SetActive(false);
         _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[0].SetActive(true);
@@ -124,6 +136,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _helpTrigger.SetActive(false);
         _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[1].SetActive(true);
@@ -141,6 +154,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _helpTrigger.SetActive(false);
         _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[2].SetActive(true);
@@ -158,6 +172,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _helpTrigger.SetActive(false);
         _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[3].SetActive(true);
@@ -316,6 +331,7 @@ public class SelectionsManager : MonoBehaviour
 
     public void OnOpenStageSelection()
     {
+        _helpTrigger.SetActive(false);
         _stageSelections.SetActive(true);
         _quizselections.SetActive(false);
         _simulasiSelections.SetActive(false);

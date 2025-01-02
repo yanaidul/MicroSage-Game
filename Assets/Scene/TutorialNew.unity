@@ -789,19 +789,26 @@ MonoBehaviour:
   - Tutorial ketujuh
   tutorialTexts:
   - Digunakan untuk menyalakan listrik
-  - + -
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Jalur Positif dan Negatif, digunakan untuk mengalirkan arus listrik kepada IC
+    dan lampu
+  - untuk menghitung waktu, baik dalam durasi tertentu atau dalam pengaturan waktu
+    mundur.
+  - Mewakili komponen gerbang logika seperti AND, OR, atau NOT yang digunakan untuk
+    simulasi rangkaian digital.
+  - menampilkan status keluaran, seperti nyala (on) atau mati (off), dalam simulasi
+    rangkaian elektronik.
+  - Memberikan akses ke pengaturan aplikasi, termasuk konfigurasi fitur, preferensi,
+    atau pengaturan sistem lainnya.
+  - Berfungsi untuk membatalkan tindakan terakhir yang dilakukan pengguna, memberikan
+    kemampuan untuk kembali ke langkah sebelumnya.
+  - Mengatur ulang seluruh simulasi atau aplikasi ke kondisi awal, menghapus semua
+    perubahan yang telah dilakukan.
+  - sambungkan warna merah di antara warna merah
+  - sambungkan warna hijau di antara warna hijau
+  - sambungkan warna kuning di antara warna kuning
+  - sambungkan warna biru di antara warna biru
+  - sambungkan daya positif berasal dari generator ke lampu
+  - sambungkan daya positif ke lampu
   - 
   textKontainerTutorial: {fileID: 386361387}
   triggerSkipTutorial: {fileID: 346373622}
@@ -2027,7 +2034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6608862032667671656, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6780502253825347869, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_IsActive
@@ -2060,14 +2067,14 @@ PrefabInstance:
     - target: {fileID: 7442675010229735837, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7779232966835170676}
+      objectReference: {fileID: 185758293}
     - target: {fileID: 7442675010229735837, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPlayScene
+      value: sudahsiapTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 7442675010229735837, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneHandler, Assembly-CSharp
+      value: TutorialManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7442675010229735837, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -2147,7 +2154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8646053222123552136, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8820554962078469880, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
       propertyPath: m_IsActive
@@ -2186,7 +2193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &346373617 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4796735501448951154, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
+  m_CorrespondingSourceObject: {fileID: 304430889941492855, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
   m_PrefabInstance: {fileID: 346373614}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
