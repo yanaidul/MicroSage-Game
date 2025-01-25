@@ -5,14 +5,17 @@ using UnityEngine.Events;
 
 public class Tile : MonoBehaviour
 {
-    static public int UNPLAYABLE_INDEX = 0;
-    static public Color COLOR_HIGHTLIGHT = new Color(1, 1, 0, 0.05f);
-    static public string NAME_CONNECTION = "Connection";
-    static public string NAME_BACK = "Back";
-    static public string NAME_MAK = "Mark";
+    public static int UNPLAYABLE_INDEX = 0;
+    public static Color COLOR_HIGHTLIGHT = new Color(1, 1, 0, 0.05f);
+    public static string NAME_CONNECTION = "Connection";
+    public static string NAME_BACK = "Back";
+    public static string NAME_MAK = "Mark";
 
     public int cid = 0;
-    [SerializeField] private GameEventNoParam _onClickColorSFX;
+
+    [SerializeField]
+    private GameEventNoParam _onClickColorSFX;
+
     [HideInInspector]
     public UnityEvent<Tile> onSelected;
 
@@ -47,10 +50,7 @@ public class Tile : MonoBehaviour
 
     public Color ConnectionColor
     {
-        get
-        {
-            return this.ConnectionComponentRenderer.color;
-        }
+        get { return this.ConnectionComponentRenderer.color; }
         private set { }
     }
 
@@ -58,9 +58,10 @@ public class Tile : MonoBehaviour
     {
         get
         {
-            return this.transform.Find(NAME_CONNECTION)
-            .gameObject.transform.Find("Pipe")
-            .gameObject.GetComponent<SpriteRenderer>();
+            return this
+                .transform.Find(NAME_CONNECTION)
+                .gameObject.transform.Find("Pipe")
+                .gameObject.GetComponent<SpriteRenderer>();
         }
         private set { }
     }
@@ -77,10 +78,14 @@ public class Tile : MonoBehaviour
     private Color _originalColor;
     private Color _originalColorConnection;
 
-    [SerializeField] private bool _isNotGrid = false;
-    [SerializeField] private bool _isFromGenerator = false;
+    [SerializeField]
+    private bool _isNotGrid = false;
+
+    [SerializeField]
+    private bool _isFromGenerator = false;
     public bool IsNotGrid => _isNotGrid;
     public bool IsFromGenerator => _isFromGenerator;
+
     void Start()
     {
         _isPlayble = cid > UNPLAYABLE_INDEX;
@@ -96,6 +101,7 @@ public class Tile : MonoBehaviour
 
     public void ResetConnection()
     {
+        // if (_isFromGenerator) return;
         // if (_isSolved) return;
         var connection = this.transform.Find(NAME_CONNECTION).gameObject;
         connection.SetActive(false);
@@ -125,7 +131,11 @@ public class Tile : MonoBehaviour
     {
         Debug.Log("Tile -> ConnectionToSide: " + top + "|" + rigth + "|" + bottom + "|" + left);
         this.transform.Find(NAME_CONNECTION).gameObject.SetActive(true);
-        int angle = rigth ? -90 : bottom ? -180 : left ? -270 : 0;
+        int angle =
+            rigth ? -90
+            : bottom ? -180
+            : left ? -270
+            : 0;
         this.transform.Find(NAME_CONNECTION).gameObject.transform.Rotate(new Vector3(0, 0, angle));
     }
 
@@ -153,6 +163,7 @@ public class Tile : MonoBehaviour
     void InvokeOnSelected()
     {
         Debug.Log("Tile -> InvokeOnSelected(" + cid + ")");
-        if (onSelected != null) onSelected.Invoke(this.GetComponent<Tile>());
+        if (onSelected != null)
+            onSelected.Invoke(this.GetComponent<Tile>());
     }
 }

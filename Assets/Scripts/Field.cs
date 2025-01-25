@@ -260,7 +260,6 @@ public class Field : MonoBehaviour
 
     Vector2 FindTileCoordinates(Tile tile)
     {
-        // Debug.Log("Field -> _FindTileCoordinates: " + tile.gameObject.name + " | " + tile.gameObject.transform.parent.gameObject.name);
         int x = int.Parse(tile.gameObject.name);
         int y = int.Parse(tile.gameObject.transform.parent.gameObject.name);
         return new Vector2(x, y);

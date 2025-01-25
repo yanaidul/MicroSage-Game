@@ -57,8 +57,8 @@ EditorBuildSettings:
     path: Assets/Scene/NAND 3  New.unity
     guid: 2114664ac57915a4aa2790caa8655d27
   - enabled: 1
-    path: Assets/Scene/XOR 1 New.unity
-    guid: 66e159d2452bb3344bf7b50c0cf02cfe
+    path: Assets/Scene/XOR 1 NEW NEW.unity
+    guid: ba4ac784bde3d0944b077021c9d113f0
   - enabled: 1
     path: Assets/Scene/XOR 2 New.unity
     guid: 4580d03b18cabdc4f8b6db7e77143ec3

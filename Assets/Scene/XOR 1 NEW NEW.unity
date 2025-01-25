@@ -12298,6 +12298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Loading
       objectReference: {fileID: 0}
+    - target: {fileID: 8478047834037714990, guid: e21bb79cfa00d4a45b0bda936a6df16f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9031688861096208743, guid: e21bb79cfa00d4a45b0bda936a6df16f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13016,6 +13020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialMainManager: {fileID: 0}
+  loadingScreen: {fileID: 0}
   timerTutorial: {fileID: 0}
   fieldTutorial: {fileID: 0}
   tutorialPages:

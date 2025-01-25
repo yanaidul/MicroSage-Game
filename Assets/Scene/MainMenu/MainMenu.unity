@@ -865,8 +865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -508.99976}
-  m_SizeDelta: {x: 399.3777, y: 232.78003}
+  m_AnchoredPosition: {x: -0.000019073, y: -489}
+  m_SizeDelta: {x: 504.9274, y: 294.3004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1948475857
 MonoBehaviour:
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56720b186cd75fb41bbfb065772b0df7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0fdf5831548082a449623bf1e22f2856, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1051,6 +1051,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173944616}
     m_Modifications:
+    - target: {fileID: 1344940344210021144, guid: e21bb79cfa00d4a45b0bda936a6df16f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.6342163
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243443783847171011, guid: e21bb79cfa00d4a45b0bda936a6df16f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.6342163
+      objectReference: {fileID: 0}
     - target: {fileID: 8478047834037714990, guid: e21bb79cfa00d4a45b0bda936a6df16f, type: 3}
       propertyPath: m_Name
       value: UI Loading
